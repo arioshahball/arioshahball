@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>نتایج لیگ - آریوشاه</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0A192F, #1A2A3A);
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+ }
+        h1 {
+            color: #800020;
+            text-align: center;
+            font-size: 45px;
+            text-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+            border-bottom: 4px solid #800020;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+        }
+        .table-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        th {
+            background: rgba(231, 76, 60, 0.2);
+            color: #E74C3C;
+            font-size: 20px;
+            padding: 15px 10px;
+            border-bottom: 2px solid #E74C3C;
+        }
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 18px;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .score {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 22px;
+        }
+        .home {
+            color: #3498DB;
+        }
+        .away {
+            color: #E74C3C;
+        }
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .back-link a {
+            color: #3498DB;
+            text-decoration: none;
+            transition: 0.3s;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(52, 152, 219, 0.15);
+        }
+        .back-link a:hover {
+            color: #E74C3C;
+            background: rgba(231, 76, 60, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚽ نتایج هفته</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>تیم میزبان</th>
+                    <th>نتیجه</th>
+                    <th>تیم میهمان</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="home">رئال مادرید</td>
+                    <td class="score">۳ - ۱</td>
+                    <td class="away">بارسلونا</td>
+                </tr>
+                <tr>
+                    <td class="home">بایرن مونیخ</td>
+                    <td class="score">۲ - ۰</td>
+                    <td class="away">دورتموند</td>
+                </tr>
+                <tr>
+                    <td class="home">منچسترسیتی</td>
+                    <td class="score">۴ - ۲</td>
+                    <td class="away">لیورپول</td>
+</tr>
+                <tr>
+                    <td class="home">پاری سن ژرمن</td>
+                    <td class="score">۱ - ۱</td>
+                    <td class="away">مارسی</td>
+                </tr>
+                <tr>
+                    <td class="home">اینتر میلان</td>
+                    <td class="score">۲ - ۰</td>
+                    <td class="away">یوونتوس</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-link">
+        <a href="index.html">⬅ برگشت به صفحه اصلی</a>
+    </div>
+
+</body>
+</html>

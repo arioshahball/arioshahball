@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>نظرات زنده - آریوشاه</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0A192F, #1A2A3A);
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+        h1 {
+            color: #E74C3C;
+            text-align: center;
+            font-size: 45px;
+            text-shadow: 0 0 25px rgba(231, 76, 60, 0.6);
+            border-bottom: 4px solid #E74C3C;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        .comment-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        textarea {
+            width: 95%;
+            padding: 15px;
+            border-radius: 16px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 18px;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        textarea::placeholder {
+            color: #aaa;
+        }
+        .glass-btn {
+            background: rgba(52, 152, 219, 0.15);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #E74C3C;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .glass-btn:hover {
+            background: rgba(52, 152, 219, 0.25);
+            transform: translateY(-3px);
+            border-color: #E74C3C;
+        }
+        .comment-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 15px;
+            margin: 15px 0;
+            border-right: 4px solid #E74C3C;
+        }
+        .comment-item strong {
+            color: #FFD700;
+        }
+        .comment-item small {
+            color: #aaa;
+            display: block;
+            margin-top: 5px;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            color: #3498DB;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            color: #E74C3C;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💬 نظرات زنده کاربران</h1>
+
+    <div class="comment-box">
+        <textarea id="commentInput" placeholder="نظرت رو درباره فوتبال بنویس..."></textarea>
+        <button class="glass-btn" onclick="addComment()">📨 ارسال نظر</button>
+
+        <div id="commentsContainer" style="margin-top: 30px;">
+            <!-- نظرات اینجا نمایش داده میشه -->
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="index.html">⬅ برگشت به صفحه اصلی</a>
+    </div>
+
+    <script>
+        // ===== بارگذاری نظرات از localStorage =====
+        function loadComments() {
+            const saved = localStorage.getItem('liveComments');
+            if (saved) {
+                const comments = JSON.parse(saved);
+                const container = document.getElementById('commentsContainer');
+                container.innerHTML = '';
+                comments.forEach((text, index) => {
+                    container.innerHTML += `
+                        <div class="comment-item">
+                            <strong>⚽ کاربر ${index + 1}:</strong>
+                            <p>${text}</p>
+                            <small>${new Date().toLocaleString('fa-IR')}</small>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // ===== اضافه کردن نظر جدید =====
+        function addComment() {
+            const input = document.getElementById('commentInput');
+            const text = input.value.trim();
+            if (text === '') {
+                alert('لطفاً یه نظر بنویس!');
+                return;
+            }
+
+            const saved = localStorage.getItem('liveComments');
+            const comments = saved ? JSON.parse(saved) : [];
+            comments.push(text);
+            localStorage.setItem('liveComments', JSON.stringify(comments));
+
+            input.value = '';
+            loadComments();
+        }
+
+        // ===== بارگذاری اولیه =====
+        loadComments();
+    </script>
+
+</body>
+</html>

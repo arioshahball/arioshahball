@@ -112,47 +112,46 @@
         <a href="index.html">⬅ برگشت به صفحه اصلی</a>
     </div>
 
-    <script>
-        // ===== بارگذاری نظرات از localStorage =====
-        function loadComments() {
-            const saved = localStorage.getItem('liveComments');
-            if (saved) {
-                const comments = JSON.parse(saved);
-                const container = document.getElementById('commentsContainer');
-                container.innerHTML = '';
-                comments.forEach((text, index) => {
-                    container.innerHTML += `
-                        <div class="comment-item">
-                            <strong>⚽ کاربر ${index + 1}:</strong>
-                            <p>${text}</p>
-                            <small>${new Date().toLocaleString('fa-IR')}</small>
-                        </div>
-                    `;
-                });
-            }
-        }
-
-        // ===== اضافه کردن نظر جدید =====
-        function addComment() {
-            const input = document.getElementById('commentInput');
-            const text = input.value.trim();
-            if (text === '') {
-                alert('لطفاً یه نظر بنویس!');
-                return;
-            }
-
-            const saved = localStorage.getItem('liveComments');
-            const comments = saved ? JSON.parse(saved) : [];
-            comments.push(text);
-            localStorage.setItem('liveComments', JSON.stringify(comments));
-
-            input.value = '';
-            loadComments();
-        }
-
-        // ===== بارگذاری اولیه =====
-        loadComments();
-    </script>
-
 </body>
 </html>
+<script>
+    // ===== بارگذاری نظرات از localStorage =====
+    function loadComments() {
+        const saved = localStorage.getItem('liveComments');
+        if (saved) {
+            const comments = JSON.parse(saved);
+            const container = document.getElementById('commentsContainer');
+            container.innerHTML = '';
+            comments.forEach((text, index) => {
+                container.innerHTML += 
+                    <div class="comment-item">
+                        <strong>⚽ کاربر ${index + 1}:</strong>
+                        <p>${text}</p>
+                        <small>${new Date().toLocaleString('fa-IR')}</small>
+                    </div>
+                ;
+            });
+        }
+    }
+
+    // ===== اضافه کردن نظر جدید =====
+    function addComment() {
+        const input = document.getElementById('commentInput');
+        const text = input.value.trim();
+        if (text === '') {
+            alert('لطفاً یه نظر بنویس!');
+            return;
+        }
+
+        const saved = localStorage.getItem('liveComments');
+        const comments = saved ? JSON.parse(saved) : [];
+        comments.push(text);
+        localStorage.setItem('liveComments', JSON.stringify(comments));
+
+        input.value = '';
+        loadComments();
+    }
+
+    // ===== بارگذاری اولیه =====
+    loadComments();
+</script>

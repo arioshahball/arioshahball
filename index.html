@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آریوشاه بال - اخبار فوتبال</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyHXtZvjHq6XUojipDukaCDeSx6awc52hhI9JMFvrI4A&s=10');
             background-size: cover;
@@ -11,7 +13,84 @@
             font-family: Arial, sans-serif;
             direction: rtl;
             padding: 20px;
+            min-height: 100vh;
         }
+
+        /* ===== صفحه ورود ===== */
+        #loginScreen {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 20, 40, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .login-box {
+            background: linear-gradient(145deg, #0a3d5c, #0e5f8a);
+            border: 3px solid #00D4FF;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+        }
+        .login-box h2 {
+            color: #00D4FF;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+        .login-box p { color: #cfe8ff; margin-bottom: 25px; font-size: 15px; }
+        .role-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #00D4FF;
+            border-radius: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .role-btn:hover { background: #00D4FF; color: #00334d; transform: scale(1.03); }
+        .role-btn.admin { border-color: #FFD700; color: #FFD700; }
+        .role-btn.admin:hover { background: #FFD700; color: #00334d; }
+
+        /* ===== فرم رمز ===== */
+        #passwordSection { display: none; margin-top: 15px; }
+        #passwordSection input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #00D4FF;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #passwordSection input::placeholder { color: #9fd4f0; }
+        #passwordSection button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #00D4FF;
+            color: #00334d;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #passwordSection button:hover { background: #33ddff; }
+        #passError { color: #ff6b6b; font-size: 14px; margin-top: 8px; display: none; }
+
+        /* ===== سایت اصلی ===== */
+        #mainSite { display: none; }
         h1 {
             color: #00D4FF;
             text-align: center;
@@ -19,99 +98,654 @@
             text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
             border-bottom: 4px solid #00D4FF;
             padding-bottom: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
+        .welcome {
+            background: rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 2px solid #00D4FF;
+            border-radius: 24px;
+            padding: 25px 35px;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .welcome p { color: #4FC3F7; font-size: 20px; font-weight: bold; line-height: 1.8; }
+        .welcome span { color: #FFD700; font-size: 17px; }
+
+        /* ===== منو ===== */
+        .menu {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu a, .menu button {
+            display: inline-block;
+            color: #fff;
+            margin: 5px 8px;
+            font-size: 17px;
+            text-decoration: none;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00D4FF;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .menu a:hover, .menu button:hover { background: #00D4FF; color: #00334d; }
+        .menu .admin-only { display: none; border-color: #FFD700; color: #FFD700; }
+        .menu .admin-only:hover { background: #FFD700; color: #00334d; }
+
+        /* ===== اخبار (طراحی بهتر) ===== */
         .news-box {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 20px;
             padding: 20px 25px;
             margin-bottom: 25px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            border-right: 6px solid #ff9800;
+            border-right: 6px solid #00D4FF;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .news-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.3);
         }
         .news-box h2 {
-            color: #1e3c72;
+            color: #0a3d5c;
+            font-size: 22px;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #00D4FF;
+            padding-bottom: 8px;
         }
+        .news-box p { color: #333; line-height: 1.8; font-size: 16px; }
         .news-box img {
             width: 100%;
             border-radius: 12px;
-            margin: 10px 0;
+            margin: 12px 0;
+            border: 3px solid #00D4FF;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
         .news-box small {
             display: block;
             color: #888;
             margin-top: 10px;
+            font-size: 13px;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
+
+        /* ===== بازی پنالتی (نسخه جدید) ===== */
+        #gameSection { display: none; max-width: 750px; margin: 0 auto; text-align: center; }
+        .game-box {
+            background: rgba(0, 30, 60, 0.9);
+            border: 3px solid #00D4FF;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+        .game-box h2 { color: #00D4FF; font-size: 30px; margin-bottom: 20px; }
+        .score { color: #fff; font-size: 22px; margin-bottom: 20px; }
+        .score span { color: #FFD700; font-weight: bold; }
+        .goal-area {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(to bottom, #0a3d5c, #0e5f8a);
+            border: 4px solid #fff;
+            border-radius: 10px;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .goal-area::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 50%;
+            width: 4px;
+            background: rgba(255,255,255,0.4);
+        }
+        .goal-area::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.4);
+        }
+        .crossbar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: #fff;
+        }
+        .goalkeeper {
+            position: absolute;
+            bottom: 20px;
+            width: 50px;
+            height: 70px;
+            background: #FFD700;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            transition: left 0.5s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .ball {
+            position: absolute;
+            bottom: 0;
+            width: 25px;
+            height: 25px;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #333;
+            transition: all 0.4s ease;
+            display: none;
+        }
+        .aim-btns { margin-bottom: 15px; }
+        .aim-btn {
+            padding: 12px 25px;
+            font-size: 17px;
+            font-weight: bold;
+            border: 2px solid #00D4FF;
+            border-radius: 12px;
+            background: rgba(0, 212, 255, 0.1);
+            color: #fff;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        .aim-btn:hover { background: #00D4FF; color: #00334d; }
+        .aim-btn.selected { background: #00D4FF; color: #00334d; }
+        .shoot-btn {
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+            background: #00D4FF;
+            color: #00334d;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .shoot-btn:hover { transform: scale(1.05); background: #33ddff; }
+        .shoot-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .result-msg { color: #fff; font-size: 24px; font-weight: bold; margin-top: 15px; min-height: 35px; }
+        .result-msg.good { color: #4CAF50; }
+        .result-msg.bad { color: #ff6b6b; }
+
+        /* ===== تماس با ما ===== */
+        #contactSection { display: none; max-width: 750px; margin: 0 auto; }
+        .contact-box {
+            background: rgba(0, 30, 60, 0.9);
+            border: 3px solid #00D4FF;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            text-align: center;
+        }
+        .contact-box h2 { color: #00D4FF; font-size: 28px; margin-bottom: 20px; }
+        .contact-box p { color: #cfe8ff; font-size: 17px; line-height: 2; }
+        .contact-box .info { color: #FFD700; font-weight: bold; font-size: 18px; }
+
+        /* ===== درباره ما ===== */
+        #aboutSection { display: none; max-width: 750px; margin: 0 auto; }
+        .about-box {
+            background: rgba(0, 30, 60, 0.9);
+            border: 3px solid #00D4FF;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            text-align: center;
+        }
+        .about-box h2 { color: #00D4FF; font-size: 28px; margin-bottom: 20px; }
+        .about-box p { color: #cfe8ff; font-size: 17px; line-height: 2; }
+
+        /* ===== پنل مدیریت ===== */
+        #adminPanel { display: none; max-width: 750px; margin: 0 auto; }
+        .admin-box {
+            background: rgba(0, 30, 60, 0.9);
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        .admin-box h2 { color: #FFD700; text-align: center; margin-bottom: 20px; }
+        .admin-box label { color: #cfe8ff; display: block; margin: 10px 0 5px; }
+        .admin-box input, .admin-box textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .admin-box textarea { height: 100px; resize: vertical; }
+        .admin-box button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            background: #FFD700;
+            color: #00334d;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .admin-box button:hover { background: #ffe14d; }
+        .admin-box .delete-btn { background: #ff6b6b; color: #fff; }
+        .admin-box .delete-btn:hover { background: #ff8a8a; }
+        .admin-news-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-news-item span { color: #fff; }
+
+        /* ===== دکمه خروج ===== */
+        .logout-btn {
+            position: fixed;
+            top: 15px; left: 15px;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            z-index: 500;
+        }
+        .logout-btn:hover { background: #ff8a8a; }
     </style>
 </head>
 <body>
 
-    <h1>⚽ آریوشاه - مرجع اخبار فوتبال</h1>
-<div style="
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    padding: 25px 35px;
-    max-width: 750px;
-    margin: -10px auto 40px auto;
-    text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    direction: rtl;
-">
-    <p style="
-        color: #4FC3F7;
-        font-size: 22px;
-        font-weight: bold;
-        margin: 0;
-        line-height: 1.8;
-        text-shadow: 0 0 15px rgba(79, 195, 247, 0.2);
-    ">
-        سلام بچه ها خیلی خوش اومدین به سایت آریوبال. 🌟<br>
-        امیدوارم در سایت ما اوقات خوشی سپری کنید. بزن بریم! 🚀<br>
-        <span style="color: #FFD700; font-size: 18px;">(تم این ماه رونالدو است)</span>
-    </p>
-</div>
-<a href="penalty_game">بازی پنالتی⚽ </a>
-   <a href="penalty_game.html" style="color: #fff; margin: 0 15px; font-size: 18px; text-decoration: none; background: rgba(255,255,255,0.15);
-<a href="results.html">📊 جدول نتایج</a>
-   <a href="contact.html" style="color: #fff; margin: 0 15px; font-size: 18px; text-decoration: none; background: rgba(255,255,255,0.15); padding: 6px 20px; border-radius: 30px;">📞 تماس با ما</a>
-    <a href="about.html" style="color: #fff; margin: 0 15px; font-size: 18px; text-decoration: none; background: rgba(255,255,255,0.15); padding: 6px 20px; border-radius: 30px;">📖 درباره ما</a>
-</div>
-<div class="news-box">
-        <h2>یان دیامونده در رئال!</h2>
-        <p>یان دیامونده با ارزش 125 میلیون یورو به رئال مادرید پیوست.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRHy5jE5mITDMJyZeQvMgmp1AsRhmFGAbTE8TblB_V3A&s=10"
-        <small>منتشر شده: امروز</small>
-    </div>
-<div class="news-box">
-        <h2>دو بازی در یک روز برای بارسلونا</h2>
-        <p>بارسلونا امروز دو بازی دارد که یکی با ناتینگهام فارست در ساعت 21:30 است و دیگری با اودینزه در ساعت 23:30 است.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwyN9I-I_c-sDAPWYztAicsfH31FkK9ojunvl0k95cNA&s=10"
-        <small>منتشر شده: امروز</small>
-    </div>
-<div class="news-box">
-        <h2>کاپیتان بارسا در لیورپول. </h2>
-        <p>رسمی.کاپیتان بارسلونا یعنی آرائوخو به لیورپول پیوست.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEF4CgVOQpMoZVfMDKvEQKYqbjrT-Fp9YDgmU9LIPbw&s=10"
-        <small>منتشر شده: امروز</small>
-    </div>
-<div class="news-box">
-        <h2>رودری به رئال نه گفت! </h2>
-        <p>رودری کاپیتان اسپانیایی ها به رئال نه گفت و به احتمال زیاد به بارسلونا میپیوندد.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCO0bbt2XHThZGHimRx5Z_MXi06vGCrX8FSFPsVe_mow&s=10"
-        <small>منتشر شده: امروز</small>
-    </div>
-<div class="news-box">
-        <h2>بهترین تیم جهان.</h2>
-        <p>در این تصویر شما میتوانید رنکینگ بهترین تیم های جهان را مشاهده کنید</p>
-        <img src="https://cdn.tarafdari.com/tarafdari-static-files/ts17.tarafdari.com/contents/user725527/content-image/img_20240401_151908_498.jpg"
-        <small>منتشر شده: امروز</small>
+    <!-- ===== صفحه ورود ===== -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h2>⚽ آریوشاه بال</h2>
+            <p>به سایت فوتبالی آریوشاه بال خوش اومدی! لطفاً نقش خودت رو انتخاب کن:</p>
+            <button class="role-btn" onclick="enterAsReader()">📰 اخبارخوان هستم</button>
+            <button class="role-btn admin" onclick="showPassword()">👑 صاحب سایت هستم</button>
+            <div id="passwordSection">
+                <input type="password" id="adminPass" placeholder="رمز عبور را وارد کنید">
+                <button onclick="checkPassword()">ورود به پنل</button>
+                <div id="passError">❌ رمز اشتباه است!</div>
+            </div>
+        </div>
     </div>
 
+    <!-- ===== سایت اصلی ===== -->
+    <div id="mainSite">
+        <button class="logout-btn" onclick="logout()">🚪 خروج</button>
+        <h1>⚽ آریوشاه بال - مرجع اخبار فوتبال</h1>
+
+        <div class="welcome">
+            <p>سلام بچه ها خیلی خوش اومدین به سایت آریوشاه بال! 🌟<br>
+            امیدوارم در سایت ما اوقات خوشی سپری کنید. بزن بریم! 🚀<br>
+            <span>(تم این ماه رونالدو است)</span></p>
+        </div>
+
+        <div class="menu">
+            <button onclick="showNews()">📰 اخبار</button>
+            <button onclick="showGame()">⚽ بازی پنالتی</button>
+            <button onclick="showContact()">📞 تماس با ما</button>
+            <button onclick="showAbout()">📖 درباره ما</button>
+            <button class="admin-only" id="adminMenuBtn" onclick="showAdmin()">🛠️ پنل مدیریت</button>
+        </div>
+
+        <!-- اخبار -->
+        <div id="newsSection">
+            <div class="news-box">
+                <h2>🔥 یان دیامونده در رئال!</h2>
+                <p>یان دیامونده با ارزش 125 میلیون یورو به رئال مادرید پیوست. این انتقال یکی از بزرگ‌ترین نقل و انتقالات فصل است!</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRHy5jE5mITDMJyZeQvMgmp1AsRhmFGAbTE8TblB_V3A&s=10">
+                <small>📅 منتشر شده: امروز</small>
+            </div>
+            <div class="news-box">
+                <h2>⚽ دو بازی در یک روز برای بارسلونا</h2>
+                <p>بارسلونا امروز دو بازی دارد که یکی با ناتینگهام فارست در ساعت 21:30 است و دیگری با اودینزه در ساعت 23:30 است.</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwyN9I-I_c-sDAPWYztAicsfH31FkK9ojunvl0k95cNA&s=10">
+                <small>📅 منتشر شده: امروز</small>
+            </div>
+            <div class="news-box">
+                <h2>🔵 کاپیتان بارسا در لیورپول</h2>
+                <p>رسمی. کاپیتان بارسلونا یعنی آرائوخو به لیورپول پیوست. انتقالی که همه را شگفت‌زده کرد!</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEF4CgVOQpMoZVfMDKvEQKYqbjrT-Fp9YDgmU9LIPbw&s=10">
+                <small>📅 منتشر شده: امروز</small>
+            </div>
+            <div class="news-box">
+                <h2>❌ رودری به رئال نه گفت!</h2>
+                <p>رودری کاپیتان اسپانیایی‌ها به رئال نه گفت و به احتمال زیاد به بارسلونا می‌پیوندد.</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCO0bbt2XHThZGHimRx5Z_MXi06vGCrX8FSFPsVe_mow&s=10">
+                <small>📅 منتشر شده: امروز</small>
+            </div>
+            <div class="news-box">
+                <h2>🏆 بهترین تیم جهان</h2>
+                <p>در این تصویر شما می‌توانید رنکینگ بهترین تیم‌های جهان را مشاهده کنید.</p>
+                <img src="https://cdn.tarafdari.com/tarafdari-static-files/ts17.tarafdari.com/contents/user725527/content-image/img_20240401_151908_498.jpg">
+                <small>📅 منتشر شده: امروز</small>
+            </div>
+        </div>
+
+        <!-- بازی پنالتی (نسخه جدید با نشونه‌گیری) -->
+        <div id="gameSection">
+            <div class="game-box">
+                <h2>⚽ بازی پنالتی</h2>
+                <div class="score">امتیاز تو: <span id="score">0</span> | شوت‌ها: <span id="shots">0</span> از 5</div>
+                <div class="goal-area" id="goalArea">
+                    <div class="crossbar"></div>
+                    <div class="goalkeeper" id="goalkeeper">🧤</div>
+                    <div class="ball" id="ball"></div>
+                </div>
+                <p style="color:#cfe8ff; margin-bottom:10px;">جهت شوت را انتخاب کن:</p>
+                <div class="aim-btns">
+                    <button class="aim-btn" onclick="selectAim('left')">⬅️ چپ</button>
+                    <button class="aim-btn" onclick="selectAim('center')">⬆️ وسط</button>
+                    <button class="aim-btn" onclick="selectAim('right')">➡️ راست</button>
+                </div>
+                <button class="shoot-btn" id="shootBtn" onclick="shoot()">🚀 شوت بزن!</button>
+                <div class="result-msg" id="resultMsg"></div>
+            </div>
+        </div>
+
+        <!-- تماس با ما -->
+        <div id="contactSection">
+            <div class="contact-box">
+                <h2>📞 تماس با ما</h2>
+                <p>برای ارتباط با تیم آریوشاه بال می‌تونید از راه‌های زیر استفاده کنید:</p>
+                <p class="info">📧 ایمیل: genariyansamad93@gmail.com</p>
+                <p class="info">📞 شماره تماس: 09371130903</p>
+            </div>
+        </div>
+
+        <!-- درباره ما -->
+        <div id="aboutSection">
+            <div class="about-box">
+                <h2>📖 درباره ما</h2>
+                <p>سایت آریوشاه بال یک مرجع تخصصی اخبار فوتبال است که توسط آریوشاه عزیز اداره می‌شود. 🏆</p>
+                <p>ما هر روز آخرین اخبار نقل و انتقالات، نتایج بازی‌ها و تحلیل‌های فوتبالی را برای شما منتشر می‌کنیم.</p>
+                <p>هدف ما این است که بهترین و به‌روزترین اخبار فوتبال را در اختیار هواداران قرار دهیم. ⚽</p>
+            </div>
+        </div>
+
+        <!-- پنل مدیریت -->
+        <div id="adminPanel">
+            <div class="admin-box">
+                <h2>🛠️ پنل مدیریت آریوشاه</h2>
+                <label>عنوان خبر:</label>
+                <input type="text" id="newTitle" placeholder="عنوان خبر جدید">
+                <label>متن خبر:</label>
+                <textarea id="newText" placeholder="متن خبر جدید..."></textarea>
+                <label>لینک تصویر (اختیاری):</label>
+                <input type="text" id="newImg" placeholder="https://...">
+                <button onclick="addNews()">➕ افزودن خبر</button>
+                <h3 style="color:#FFD700; margin-top:20px;">اخبار موجود:</h3>
+                <div id="adminNewsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== مدیریت ورود =====
+        var isAdmin = false;
+
+        function enterAsReader() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainSite').style.display = 'block';
+            isAdmin = false;
+            showNews();
+        }
+
+        function showPassword() {
+            document.getElementById('passwordSection').style.display = 'block';
+            document.getElementById('passError').style.display = 'none';
+        }
+
+        function checkPassword() {
+            var pass = document.getElementById('adminPass').value;
+            if (pass === 'ari8990') {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainSite').style.display = 'block';
+                isAdmin = true;
+                document.querySelectorAll('.admin-only').forEach(function(el) {
+                    el.style.display = 'inline-block';
+                });
+                showAdmin();
+            } else {
+                document.getElementById('passError').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.getElementById('mainSite').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('passwordSection').style.display = 'none';
+            document.getElementById('passError').style.display = 'none';
+            isAdmin = false;
+            document.querySelectorAll('.admin-only').forEach(function(el) {
+                el.style.display = 'none';
+            });
+        }
+
+        // ===== نمایش بخش‌ها =====
+        function showNews() {
+            document.getElementById('newsSection').style.display = 'block';
+            document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function showGame() {
+            document.getElementById('newsSection').style.display = 'none';
+            document.getElementById('gameSection').style.display = 'block';
+            document.getElementById('contactSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            resetGame();
+        }
+
+        function showContact() {
+            document.getElementById('newsSection').style.display = 'none';
+            document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'block';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function showAbout() {
+            document.getElementById('newsSection').style.display = 'none';
+            document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function showAdmin() {
+            if (!isAdmin) return;
+            document.getElementById('newsSection').style.display = 'none';
+            document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('contactSection').style.display = 'none';
+            document.getElementById('aboutSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            renderAdminList();
+        }
+
+        // ===== بازی پنالتی (نسخه جدید) =====
+        var score = 0;
+        var shots = 0;
+        var maxShots = 5;
+        var selectedAim = null;
+        var gameActive = false;
+
+        function resetGame() {
+            score = 0;
+            shots = 0;
+            selectedAim = null;
+            gameActive = true;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('shots').textContent = '0';
+            document.getElementById('resultMsg').textContent = '';
+            document.getElementById('resultMsg').className = 'result-msg';
+            document.getElementById('shootBtn').disabled = false;
+            document.getElementById('ball').style.display = 'none';
+            document.getElementById('goalkeeper').style.left = '50%';
+            document.getElementById('goalkeeper').style.transform = 'translateX(-50%)';
+            // حذف انتخاب قبلی
+            document.querySelectorAll('.aim-btn').forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+        }
+
+        function selectAim(direction) {
+            if (!gameActive) return;
+            selectedAim = direction;
+            document.querySelectorAll('.aim-btn').forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+            // پیدا کردن دکمه انتخاب شده
+            var buttons = document.querySelectorAll('.aim-btn');
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick').includes(direction)) {
+                    btn.classList.add('selected');
+                }
+            });
+        }
+
+        function shoot() {
+            if (!gameActive) return;
+            if (!selectedAim) {
+                document.getElementById('resultMsg').textContent = '⚠️ اول جهت شوت را انتخاب کن!';
+                document.getElementById('resultMsg').className = 'result-msg bad';
+                return;
+            }
+            if (shots >= maxShots) return;
+
+            shots++;
+            var goalArea = document.getElementById('goalArea');
+            var areaWidth = goalArea.offsetWidth;
+            var ball = document.getElementById('ball');
+            var keeper = document.getElementById('goalkeeper');
+
+            // موقعیت‌های شوت
+            var positions = {
+                left: areaWidth * 0.2,
+                center: areaWidth * 0.5,
+                right: areaWidth * 0.8
+            };
+
+            // دروازه‌بان شانسی میره (چپ، وسط یا راست)
+            var keeperPositions = ['left', 'center', 'right'];
+            var keeperChoice = keeperPositions[Math.floor(Math.random() * 3)];
+            var keeperX = positions[keeperChoice];
+
+            // حرکت دروازه‌بان
+            keeper.style.left = keeperX + 'px';
+            keeper.style.transform = 'translateX(-50%)';
+
+            // نمایش توپ و حرکتش
+            ball.style.display = 'block';
+            ball.style.left = positions[selectedAim] + 'px';
+            ball.style.bottom = '120px';
+
+            // نتیجه
+            var msg = document.getElementById('resultMsg');
+            var isGoal = (selectedAim !== keeperChoice);
+
+            setTimeout(function() {
+                if (isGoal) {
+                    score++;
+                    msg.textContent = '⚽ گل زدی! آفرین!';
+                    msg.className = 'result-msg good';
+                } else {
+                    msg.textContent = '😅 دروازه‌بان گرفت!';
+                    msg.className = 'result-msg bad';
+                }
+
+                document.getElementById('score').textContent = score;
+                document.getElementById('shots').textContent = shots;
+
+                // پنهان کردن توپ
+                setTimeout(function() {
+                    ball.style.display = 'none';
+                    ball.style.bottom = '0';
+                }, 500);
+
+                if (shots >= maxShots) {
+                    gameActive = false;
+                    setTimeout(function() {
+                        msg.textContent = '🏁 بازی تموم شد! امتیاز نهایی: ' + score + ' از ' + maxShots;
+                        document.getElementById('shootBtn').disabled = true;
+                    }, 800);
+                }
+            }, 400);
+        }
+
+        // ===== پنل مدیریت - افزودن خبر =====
+        function addNews() {
+            var title = document.getElementById('newTitle').value;
+            var text = document.getElementById('newText').value;
+            var img = document.getElementById('newImg').value;
+
+            if (!title || !text) {
+                alert('لطفاً عنوان و متن خبر را وارد کنید!');
+                return;
+            }
+
+            var newsBox = document.createElement('div');
+            newsBox.className = 'news-box';
+            var imgHtml = img ? '<img src="' + img + '">' : '';
+            newsBox.innerHTML = '<h2>' + title + '</h2><p>' + text + '</p>' + imgHtml + '<small>📅 منتشر شده: همین الان</small>';
+
+            document.getElementById('newsSection').insertBefore(newsBox, document.getElementById('newsSection').firstChild);
+            renderAdminList();
+
+            document.getElementById('newTitle').value = '';
+            document.getElementById('newText').value = '';
+            document.getElementById('newImg').value = '';
+            alert('✅ خبر با موفقیت اضافه شد!');
+        }
+
+        // ===== نمایش لیست اخبار در پنل مدیریت =====
+        function renderAdminList() {
+            var list = document.getElementById('adminNewsList');
+            list.innerHTML = '';
+            var boxes = document.querySelectorAll('#newsSection .news-box');
+            boxes.forEach(function(box, index) {
+                var item = document.createElement('div');
+                item.className = 'admin-news-item';
+                var title = box.querySelector('h2').textContent;
+                item.innerHTML = '<span>' + title + '</span><button class="delete-btn" onclick="deleteNews(this)">🗑️ حذف</button>';
+                list.appendChild(item);
+            });
+        }
+
+        function deleteNews(btn) {
+            if (confirm('آیا مطمئن هستید این خبر حذف شود؟')) {
+                var item = btn.parentElement;
+                var title = item.querySelector('span').textContent;
+                var boxes = document.querySelectorAll('#newsSection .news-box');
+                boxes.forEach(function(box) {
+                    if (box.querySelector('h2').textContent === title) {
+                        box.remove();
+                    }
+                });
+                renderAdminList();
+            }
+        }
+    </script>
 </body>
-</html>          
+</html>

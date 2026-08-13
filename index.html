@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>آریوشاه بال - اخبار فوتبال</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,8 +19,12 @@
         }
 
         body {
+
             background-image:
-                linear-gradient(rgba(0, 20, 40, 0.35), rgba(0, 20, 40, 0.55)),
+                linear-gradient(
+                    rgba(0, 20, 40, 0.35),
+                    rgba(0, 20, 40, 0.55)
+                ),
                 url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyHXtZvjHq6XUojipDukaCDeSx6awc52hhI9JMFvrI4A&s=10');
 
             background-size: cover;
@@ -22,11 +32,16 @@
             background-attachment: fixed;
 
             font-family: Arial, sans-serif;
+
             direction: rtl;
+
             padding: 20px;
+
             min-height: 100vh;
+
             color: white;
         }
+
 
         button,
         input,
@@ -34,24 +49,34 @@
             font-family: inherit;
         }
 
+
         /* =========================================
            صفحه ورود
         ========================================= */
 
         #loginScreen {
+
             position: fixed;
+
             inset: 0;
-            background: rgba(0, 15, 30, 0.96);
+
+            background: rgba(0, 15, 30, 0.97);
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             z-index: 1000;
+
             padding: 20px;
+
+            overflow-y: auto;
         }
 
+
         .login-box {
+
             background:
                 linear-gradient(
                     145deg,
@@ -60,12 +85,15 @@
                 );
 
             border: 3px solid #00f5d4;
+
             border-radius: 28px;
 
             padding: 40px;
+
             text-align: center;
 
             width: 90%;
+
             max-width: 430px;
 
             box-shadow:
@@ -75,141 +103,325 @@
             animation: loginGlow 3s infinite alternate;
         }
 
+
         @keyframes loginGlow {
+
             from {
+
                 box-shadow:
                     0 0 25px rgba(0, 245, 212, 0.3);
             }
 
             to {
+
                 box-shadow:
                     0 0 45px rgba(0, 245, 212, 0.6);
             }
         }
 
+
         .login-box h2 {
+
             color: #00f5d4;
+
             font-size: 30px;
+
             margin-bottom: 12px;
-            text-shadow: 0 0 20px rgba(0, 245, 212, 0.7);
+
+            text-shadow:
+                0 0 20px rgba(0, 245, 212, 0.7);
         }
 
+
         .login-box p {
+
             color: #d9ffff;
+
             margin-bottom: 25px;
+
             font-size: 15px;
+
             line-height: 1.8;
         }
 
+
         .role-btn {
+
             display: block;
+
             width: 100%;
 
             padding: 15px;
+
             margin: 12px 0;
 
             border: 2px solid #00f5d4;
+
             border-radius: 15px;
 
             background: rgba(0, 245, 212, 0.08);
+
             color: white;
 
             font-size: 18px;
+
             font-weight: bold;
 
             cursor: pointer;
+
             transition: 0.3s;
         }
 
+
         .role-btn:hover {
+
             background: #00f5d4;
+
             color: #003b43;
+
             transform: scale(1.04);
-            box-shadow: 0 0 25px rgba(0, 245, 212, 0.5);
+
+            box-shadow:
+                0 0 25px rgba(0, 245, 212, 0.5);
         }
 
+
         .role-btn.admin {
+
             border-color: #00f5d4;
+
             color: #00f5d4;
         }
 
+
         .role-btn.admin:hover {
+
             background: #00f5d4;
+
             color: #003b43;
         }
 
+
         /* =========================================
-           رمز عبور
+           فرم های ورود
         ========================================= */
 
+        #registerSection,
+        #userLoginSection,
         #passwordSection {
+
             display: none;
+
             margin-top: 15px;
         }
 
+
+        #registerSection input,
+        #userLoginSection input,
         #passwordSection input {
+
             width: 100%;
 
             padding: 13px;
 
             border-radius: 12px;
+
             border: 2px solid #00f5d4;
 
             background: rgba(0, 30, 45, 0.7);
+
             color: white;
 
             font-size: 16px;
+
             text-align: center;
 
             margin-bottom: 10px;
+
             outline: none;
         }
 
+
+        #registerSection input:focus,
+        #userLoginSection input:focus,
         #passwordSection input:focus {
-            box-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+
+            box-shadow:
+                0 0 15px rgba(0, 245, 212, 0.5);
         }
 
+
+        #registerSection input::placeholder,
+        #userLoginSection input::placeholder,
         #passwordSection input::placeholder {
+
             color: #a8eeee;
         }
 
-        #passwordSection button {
+
+        .form-main-btn {
+
             width: 100%;
 
             padding: 13px;
 
             border: none;
+
             border-radius: 12px;
 
             background: #00f5d4;
+
             color: #003b43;
 
             font-size: 17px;
+
             font-weight: bold;
 
             cursor: pointer;
+
+            margin-bottom: 10px;
+
+            transition: 0.3s;
         }
 
-        #passwordSection button:hover {
+
+        .form-main-btn:hover {
+
             background: #55ffe8;
+
+            transform: translateY(-2px);
         }
+
+
+        .back-btn {
+
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #00f5d4;
+
+            border-radius: 12px;
+
+            background: rgba(0, 245, 212, 0.08);
+
+            color: #00f5d4;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        .back-btn:hover {
+
+            background: rgba(0, 245, 212, 0.2);
+        }
+
+
+        .login-error {
+
+            color: #ff7777;
+
+            font-size: 14px;
+
+            margin-top: 10px;
+
+            line-height: 1.7;
+
+            min-height: 20px;
+        }
+
 
         #passError {
+
             color: #ff7777;
+
             font-size: 14px;
+
             margin-top: 10px;
+
             display: none;
         }
+
+
+        /* =========================================
+           کد امنیتی
+        ========================================= */
+
+        .captcha-box {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin: 10px 0;
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+            border: 2px dashed #00f5d4;
+
+            background: rgba(0, 245, 212, 0.08);
+        }
+
+
+        #captchaQuestion {
+
+            color: #00f5d4;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            user-select: none;
+
+            text-shadow:
+                0 0 10px rgba(0,245,212,0.5);
+        }
+
+
+        .captcha-refresh {
+
+            border: none;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .captcha-refresh:hover {
+
+            transform: rotate(180deg);
+        }
+
 
         /* =========================================
            سایت اصلی
         ========================================= */
 
         #mainSite {
+
             display: none;
         }
 
+
         h1 {
+
             color: #00f5d4;
 
             text-align: center;
@@ -223,15 +435,19 @@
             border-bottom: 4px solid #00f5d4;
 
             padding-bottom: 15px;
+
             margin-bottom: 20px;
         }
 
+
         .welcome {
+
             background: rgba(0, 245, 212, 0.08);
 
             backdrop-filter: blur(15px);
 
             border: 2px solid #00f5d4;
+
             border-radius: 24px;
 
             padding: 25px 35px;
@@ -247,28 +463,41 @@
                 0 0 25px rgba(0, 245, 212, 0.15);
         }
 
+
         .welcome p {
+
             color: #9ffff1;
+
             font-size: 20px;
+
             font-weight: bold;
+
             line-height: 1.8;
         }
 
+
         .welcome span {
+
             color: #00f5d4;
+
             font-size: 17px;
         }
+
 
         /* =========================================
            منو
         ========================================= */
 
         .menu {
+
             text-align: center;
+
             margin-bottom: 30px;
         }
 
+
         .menu button {
+
             display: inline-block;
 
             color: white;
@@ -290,8 +519,11 @@
             transition: 0.3s;
         }
 
+
         .menu button:hover {
+
             background: #00f5d4;
+
             color: #003b43;
 
             transform: translateY(-2px);
@@ -300,18 +532,23 @@
                 0 5px 20px rgba(0, 245, 212, 0.35);
         }
 
+
         .menu .admin-only {
+
             display: none;
 
             border-color: #00f5d4;
+
             color: #00f5d4;
         }
+
 
         /* =========================================
            اخبار
         ========================================= */
 
         .news-box {
+
             background: rgba(255, 255, 255, 0.94);
 
             border-radius: 20px;
@@ -328,19 +565,24 @@
             max-width: 750px;
 
             margin-left: auto;
+
             margin-right: auto;
 
             transition: 0.3s;
         }
 
+
         .news-box:hover {
+
             transform: translateY(-5px);
 
             box-shadow:
                 0 12px 30px rgba(0, 245, 212, 0.3);
         }
 
+
         .news-box h2 {
+
             color: #07535b;
 
             font-size: 22px;
@@ -352,7 +594,9 @@
             padding-bottom: 8px;
         }
 
+
         .news-box p {
+
             color: #333;
 
             line-height: 1.8;
@@ -360,7 +604,9 @@
             font-size: 16px;
         }
 
+
         .news-box img {
+
             width: 100%;
 
             border-radius: 12px;
@@ -373,7 +619,9 @@
                 0 4px 15px rgba(0,0,0,0.15);
         }
 
+
         .news-box small {
+
             display: inline-block;
 
             color: #777;
@@ -389,11 +637,13 @@
             border-radius: 20px;
         }
 
+
         /* =========================================
            بازی پنالتی
         ========================================= */
 
         #gameSection {
+
             display: none;
 
             max-width: 750px;
@@ -403,7 +653,9 @@
             text-align: center;
         }
 
+
         .game-box {
+
             background: rgba(0, 30, 45, 0.92);
 
             border: 3px solid #00f5d4;
@@ -416,7 +668,9 @@
                 0 0 30px rgba(0, 245, 212, 0.3);
         }
 
+
         .game-box h2 {
+
             color: #00f5d4;
 
             font-size: 30px;
@@ -424,7 +678,9 @@
             margin-bottom: 20px;
         }
 
+
         .score {
+
             color: white;
 
             font-size: 22px;
@@ -432,13 +688,17 @@
             margin-bottom: 20px;
         }
 
+
         .score span {
+
             color: #00f5d4;
 
             font-weight: bold;
         }
 
+
         .goal-area {
+
             width: 100%;
 
             height: 220px;
@@ -461,7 +721,9 @@
             overflow: hidden;
         }
 
+
         .goal-area::before {
+
             content: '';
 
             position: absolute;
@@ -476,7 +738,9 @@
             background: rgba(255,255,255,0.4);
         }
 
+
         .goal-area::after {
+
             content: '';
 
             position: absolute;
@@ -491,10 +755,13 @@
             background: rgba(255,255,255,0.4);
         }
 
+
         .crossbar {
+
             position: absolute;
 
             top: 0;
+
             left: 0;
             right: 0;
 
@@ -503,12 +770,15 @@
             background: white;
         }
 
+
         .goalkeeper {
+
             position: absolute;
 
             bottom: 20px;
 
             width: 50px;
+
             height: 70px;
 
             background: #00f5d4;
@@ -520,6 +790,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             font-size: 30px;
@@ -530,12 +801,15 @@
                 0 4px 10px rgba(0,0,0,0.3);
         }
 
+
         .ball {
+
             position: absolute;
 
             bottom: 0;
 
             width: 25px;
+
             height: 25px;
 
             background: white;
@@ -549,11 +823,15 @@
             display: none;
         }
 
+
         .aim-btns {
+
             margin-bottom: 15px;
         }
 
+
         .aim-btn {
+
             padding: 12px 25px;
 
             font-size: 17px;
@@ -575,8 +853,10 @@
             transition: 0.3s;
         }
 
+
         .aim-btn:hover,
         .aim-btn.selected {
+
             background: #00f5d4;
 
             color: #003b43;
@@ -585,7 +865,9 @@
                 0 0 15px rgba(0,245,212,0.4);
         }
 
+
         .shoot-btn {
+
             padding: 15px 40px;
 
             font-size: 20px;
@@ -607,18 +889,25 @@
             transition: 0.3s;
         }
 
+
         .shoot-btn:hover {
+
             transform: scale(1.05);
 
             background: #55ffe8;
         }
 
+
         .shoot-btn:disabled {
+
             opacity: 0.5;
+
             cursor: not-allowed;
         }
 
+
         .result-msg {
+
             color: white;
 
             font-size: 24px;
@@ -630,13 +919,18 @@
             min-height: 35px;
         }
 
+
         .result-msg.good {
+
             color: #00f5d4;
         }
 
+
         .result-msg.bad {
+
             color: #ff6b6b;
         }
+
 
         /* =========================================
            تماس و درباره
@@ -644,6 +938,7 @@
 
         #contactSection,
         #aboutSection {
+
             display: none;
 
             max-width: 750px;
@@ -651,8 +946,10 @@
             margin: 0 auto;
         }
 
+
         .contact-box,
         .about-box {
+
             background: rgba(0, 30, 45, 0.92);
 
             border: 3px solid #00f5d4;
@@ -667,8 +964,10 @@
             text-align: center;
         }
 
+
         .contact-box h2,
         .about-box h2 {
+
             color: #00f5d4;
 
             font-size: 28px;
@@ -676,8 +975,10 @@
             margin-bottom: 20px;
         }
 
+
         .contact-box p,
         .about-box p {
+
             color: #d9ffff;
 
             font-size: 17px;
@@ -687,7 +988,9 @@
             margin-bottom: 8px;
         }
 
+
         .contact-box .info {
+
             color: #00f5d4;
 
             font-weight: bold;
@@ -695,11 +998,13 @@
             font-size: 18px;
         }
 
+
         /* =========================================
-           پنل صاحب سایت - نسخه جدید
+           پنل صاحب سایت
         ========================================= */
 
         #adminPanel {
+
             display: none;
 
             max-width: 950px;
@@ -707,7 +1012,9 @@
             margin: 0 auto;
         }
 
+
         .admin-box {
+
             background:
                 linear-gradient(
                     145deg,
@@ -726,7 +1033,9 @@
                 inset 0 0 40px rgba(0,245,212,0.03);
         }
 
+
         .admin-header {
+
             text-align: center;
 
             padding-bottom: 20px;
@@ -736,7 +1045,9 @@
             border-bottom: 2px solid rgba(0,245,212,0.35);
         }
 
+
         .admin-header h2 {
+
             color: #00f5d4;
 
             font-size: 32px;
@@ -747,20 +1058,18 @@
                 0 0 20px rgba(0,245,212,0.5);
         }
 
+
         .admin-header p {
+
             color: #c9ffff;
 
             font-size: 15px;
         }
 
-        /* وضعیت آنلاین */
 
-        .online-status {
-            display: inline-flex;
+        .admin-badge {
 
-            align-items: center;
-
-            gap: 8px;
+            display: inline-block;
 
             margin-top: 15px;
 
@@ -777,40 +1086,13 @@
             font-weight: bold;
         }
 
-        .online-dot {
-            width: 11px;
-            height: 11px;
 
-            background: #00f5d4;
-
-            border-radius: 50%;
-
-            box-shadow:
-                0 0 10px #00f5d4;
-
-            animation: onlinePulse 1.4s infinite;
-        }
-
-        @keyframes onlinePulse {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.35;
-                transform: scale(0.7);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* کارت های آماری */
+        /* =========================================
+           کارت های آماری
+        ========================================= */
 
         .stats-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -821,7 +1103,9 @@
             margin-bottom: 25px;
         }
 
+
         .stat-card {
+
             position: relative;
 
             overflow: hidden;
@@ -844,12 +1128,15 @@
             transition: 0.3s;
         }
 
+
         .stat-card::before {
+
             content: '';
 
             position: absolute;
 
             width: 100px;
+
             height: 100px;
 
             background: rgba(0,245,212,0.08);
@@ -857,10 +1144,13 @@
             border-radius: 50%;
 
             top: -40px;
+
             right: -30px;
         }
 
+
         .stat-card:hover {
+
             transform: translateY(-5px);
 
             border-color: #00f5d4;
@@ -869,13 +1159,17 @@
                 0 10px 25px rgba(0,245,212,0.18);
         }
 
+
         .stat-icon {
+
             font-size: 32px;
 
             margin-bottom: 8px;
         }
 
+
         .stat-title {
+
             color: #bafefa;
 
             font-size: 14px;
@@ -883,7 +1177,9 @@
             margin-bottom: 8px;
         }
 
+
         .stat-value {
+
             color: #00f5d4;
 
             font-size: 30px;
@@ -894,9 +1190,13 @@
                 0 0 15px rgba(0,245,212,0.35);
         }
 
-        /* ابزارهای مدیریت */
+
+        /* =========================================
+           ابزارهای مدیریت
+        ========================================= */
 
         .admin-tools {
+
             display: grid;
 
             grid-template-columns:
@@ -907,7 +1207,9 @@
             margin-bottom: 25px;
         }
 
+
         .admin-tool-btn {
+
             border: 1px solid #00f5d4;
 
             background:
@@ -928,7 +1230,9 @@
             transition: 0.3s;
         }
 
+
         .admin-tool-btn:hover {
+
             background: #00f5d4;
 
             color: #003b43;
@@ -936,9 +1240,13 @@
             transform: translateY(-2px);
         }
 
-        /* اخبار موجود */
+
+        /* =========================================
+           لیست اخبار پنل
+        ========================================= */
 
         .admin-news-title {
+
             color: #00f5d4;
 
             font-size: 21px;
@@ -950,7 +1258,9 @@
             padding-bottom: 10px;
         }
 
+
         .admin-news-item {
+
             background:
                 rgba(255,255,255,0.06);
 
@@ -971,13 +1281,17 @@
             gap: 10px;
         }
 
+
         .admin-news-item span {
+
             color: white;
 
             font-size: 14px;
         }
 
+
         .admin-news-item button {
+
             background: #ff6262;
 
             color: white;
@@ -993,13 +1307,19 @@
             font-weight: bold;
         }
 
+
         .admin-news-item button:hover {
+
             background: #ff8585;
         }
 
-        /* باکس سیستم */
+
+        /* =========================================
+           سیستم
+        ========================================= */
 
         .system-box {
+
             margin-top: 20px;
 
             padding: 18px;
@@ -1012,13 +1332,17 @@
             border: 1px solid rgba(0,245,212,0.2);
         }
 
+
         .system-box h3 {
+
             color: #00f5d4;
 
             margin-bottom: 12px;
         }
 
+
         .system-row {
+
             display: flex;
 
             justify-content: space-between;
@@ -1027,29 +1351,37 @@
 
             padding: 9px 0;
 
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
 
             color: #dffffc;
         }
 
+
         .system-row:last-child {
+
             border-bottom: none;
         }
 
+
         .system-good {
+
             color: #00f5d4;
 
             font-weight: bold;
         }
+
 
         /* =========================================
            خروج
         ========================================= */
 
         .logout-btn {
+
             position: fixed;
 
             top: 15px;
+
             left: 15px;
 
             background: #ff6262;
@@ -1074,20 +1406,25 @@
             transition: 0.3s;
         }
 
+
         .logout-btn:hover {
+
             background: #ff8585;
 
             transform: scale(1.05);
         }
+
 
         /* =========================================
            اعلان
         ========================================= */
 
         #toast {
+
             position: fixed;
 
             bottom: 25px;
+
             right: 25px;
 
             background:
@@ -1117,11 +1454,14 @@
             max-width: 330px;
         }
 
+
         #toast.show {
+
             transform: translateY(0);
 
             opacity: 1;
         }
+
 
         /* =========================================
            موبایل
@@ -1133,95 +1473,311 @@
                 padding: 12px;
             }
 
+
             h1 {
                 font-size: 30px;
             }
+
 
             .welcome {
                 padding: 20px 15px;
             }
 
+
             .welcome p {
                 font-size: 17px;
             }
 
+
             .menu button {
+
                 width: 90%;
+
                 margin: 5px auto;
             }
+
 
             .admin-box {
                 padding: 18px;
             }
 
+
             .admin-header h2 {
                 font-size: 25px;
             }
+
 
             .stat-value {
                 font-size: 26px;
             }
 
+
             .admin-news-item {
+
                 flex-direction: column;
+
                 align-items: stretch;
             }
 
+
             .admin-news-item button {
+
                 width: 100%;
             }
 
+
             .logout-btn {
+
                 padding: 8px 13px;
+
                 font-size: 13px;
             }
+
+
+            .login-box {
+
+                padding: 25px 18px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================================
-     صفحه ورود
-========================================= -->
+
+<!-- =====================================================
+     صفحه ورود و ثبت نام
+===================================================== -->
 
 <div id="loginScreen">
 
     <div class="login-box">
 
-        <h2>⚽ آریوشاه بال</h2>
+        <h2>
+            ⚽ آریوشاه بال
+        </h2>
 
-        <p>
+        <p id="loginDescription">
+
             به سایت فوتبالی آریوشاه بال خوش اومدی!
             <br>
-            لطفاً نقش خودت رو انتخاب کن:
+
+            برای ورود ثبت نام کن یا وارد حساب خودت شو.
+
         </p>
 
-        <button class="role-btn"
-                onclick="enterAsReader()">
-            📰 اخبارخوان هستم
-        </button>
 
-        <button class="role-btn admin"
+        <!-- انتخاب نوع ورود -->
+
+        <div id="loginChoices">
+
+            <button
+                class="role-btn"
+                onclick="showRegisterForm()">
+
+                📝 ثبت نام
+
+            </button>
+
+
+            <button
+                class="role-btn"
+                onclick="showUserLoginForm()">
+
+                🔐 ورود کاربر
+
+            </button>
+
+
+            <button
+                class="role-btn admin"
                 onclick="showPassword()">
-            👑 صاحب سایت هستم
-        </button>
+
+                👑 صاحب سایت هستم
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             ثبت نام
+        ================================================= -->
+
+        <div id="registerSection">
+
+            <input
+                type="text"
+                id="registerPhone"
+                placeholder="📱 شماره موبایل"
+                maxlength="11"
+                inputmode="numeric"
+                autocomplete="tel"
+            >
+
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="🔑 رمز عبور"
+                autocomplete="new-password"
+            >
+
+
+            <input
+                type="password"
+                id="registerPassword2"
+                placeholder="🔑 تکرار رمز عبور"
+                autocomplete="new-password"
+            >
+
+
+            <div class="captcha-box">
+
+                <span id="captchaQuestion">
+                    -----
+                </span>
+
+
+                <button
+                    type="button"
+                    class="captcha-refresh"
+                    onclick="generateCaptcha()">
+
+                    🔄
+
+                </button>
+
+            </div>
+
+
+            <input
+                type="text"
+                id="registerCaptcha"
+                placeholder="🔢 کد امنیتی را وارد کنید"
+                maxlength="5"
+                autocomplete="off"
+            >
+
+
+            <button
+                class="form-main-btn"
+                onclick="registerUser()">
+
+                📝 ثبت نام و ورود
+
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="backToLoginChoices()">
+
+                ↩️ برگشت
+
+            </button>
+
+
+            <div
+                id="registerError"
+                class="login-error">
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ورود کاربر
+        ================================================= -->
+
+        <div id="userLoginSection">
+
+            <input
+                type="text"
+                id="userLoginPhone"
+                placeholder="📱 شماره موبایل"
+                maxlength="11"
+                inputmode="numeric"
+                autocomplete="tel"
+            >
+
+
+            <input
+                type="password"
+                id="userLoginPassword"
+                placeholder="🔑 رمز عبور"
+                autocomplete="current-password"
+                onkeydown="if(event.key === 'Enter') userLogin()"
+            >
+
+
+            <button
+                class="form-main-btn"
+                onclick="userLogin()">
+
+                🔐 ورود به سایت
+
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="backToLoginChoices()">
+
+                ↩️ برگشت
+
+            </button>
+
+
+            <div
+                id="userLoginError"
+                class="login-error">
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ورود صاحب سایت
+        ================================================= -->
 
         <div id="passwordSection">
 
             <input
                 type="password"
                 id="adminPass"
-                placeholder="رمز عبور را وارد کنید"
+                placeholder="🔑 رمز صاحب سایت"
+                autocomplete="off"
                 onkeydown="if(event.key === 'Enter') checkPassword()"
             >
 
-            <button onclick="checkPassword()">
-                🔐 ورود به پنل صاحب
+
+            <button
+                class="form-main-btn"
+                onclick="checkPassword()">
+
+                👑 ورود به پنل صاحب
+
             </button>
 
+
+            <button
+                class="back-btn"
+                onclick="backToLoginChoices()">
+
+                ↩️ برگشت
+
+            </button>
+
+
             <div id="passError">
+
                 ❌ رمز اشتباه است!
+
             </div>
 
         </div>
@@ -1231,59 +1787,90 @@
 </div>
 
 
-<!-- =========================================
+<!-- =====================================================
      سایت اصلی
-========================================= -->
+===================================================== -->
 
 <div id="mainSite">
 
-    <button class="logout-btn"
-            onclick="logout()">
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
         🚪 خروج
+
     </button>
 
+
     <h1>
+
         ⚽ آریوشاه بال - مرجع اخبار فوتبال
+
     </h1>
+
 
     <div class="welcome">
 
         <p>
+
             سلام بچه ها خیلی خوش اومدین به سایت آریوشاه بال! 🌟
+
             <br>
 
             امیدوارم در سایت ما اوقات خوشی سپری کنید.
+
+            <br>
+
             بزن بریم! 🚀
 
             <br>
 
             <span>
+
                 ✨ تم این ماه رونالدو است ✨
+
             </span>
+
         </p>
 
     </div>
 
 
-    <!-- منو -->
+    <!-- =================================================
+         منو
+    ================================================= -->
 
     <div class="menu">
 
+
         <button onclick="showNews()">
+
             📰 اخبار
+
         </button>
+
 
         <button onclick="showGame()">
+
             ⚽ بازی پنالتی
+
         </button>
+
 
         <button onclick="showContact()">
+
             📞 تماس با ما
+
         </button>
 
+
         <button onclick="showAbout()">
+
             📖 درباره ما
+
         </button>
+
 
         <button
             class="admin-only"
@@ -1297,11 +1884,12 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- =================================================
          اخبار
-    ========================================= -->
+    ================================================= -->
 
     <div id="newsSection">
+
 
         <div class="news-box">
 
@@ -1310,11 +1898,17 @@
             </h2>
 
             <p>
-                یان دیامونده با ارزش 125 میلیون یورو به رئال مادرید پیوست.
+
+                یان دیامونده با ارزش 125 میلیون یورو
+                به رئال مادرید پیوست.
                 این انتقال یکی از بزرگ‌ترین نقل و انتقالات فصل است!
+
             </p>
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRHy5jE5mITDMJyZeQvMgmp1AsRhmFGAbTE8TblB_V3A&s=10">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRHy5jE5mITDMJyZeQvMgmp1AsRhmFGAbTE8TblB_V3A&s=10"
+                alt="خبر فوتبال"
+            >
 
             <small>
                 📅 منتشر شده: امروز
@@ -1330,11 +1924,17 @@
             </h2>
 
             <p>
-                بارسلونا امروز دو بازی دارد که یکی با ناتینگهام فارست
-                در ساعت 21:30 است و دیگری با اودینزه در ساعت 23:30 است.
+
+                بارسلونا امروز دو بازی دارد که یکی
+                با ناتینگهام فارست در ساعت 21:30 است
+                و دیگری با اودینزه در ساعت 23:30 است.
+
             </p>
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwyN9I-I_c-sDAPWYztAicsfH31FkK9ojunvl0k95cNA&s=10">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwyN9I-I_c-sDAPWYztAicsfH31FkK9ojunvl0k95cNA&s=10"
+                alt="بارسلونا"
+            >
 
             <small>
                 📅 منتشر شده: امروز
@@ -1350,11 +1950,17 @@
             </h2>
 
             <p>
-                رسمی. کاپیتان بارسلونا یعنی آرائوخو به لیورپول پیوست.
+
+                رسمی. کاپیتان بارسلونا یعنی آرائوخو
+                به لیورپول پیوست.
                 انتقالی که همه را شگفت‌زده کرد!
+
             </p>
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEF4CgVOQpMoZVfMDKvEQKYqbjrT-Fp9YDgmU9LIPbw&s=10">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEF4CgVOQpMoZVfMDKvEQKYqbjrT-Fp9YDgmU9LIPbw&s=10"
+                alt="آرائوخو"
+            >
 
             <small>
                 📅 منتشر شده: امروز
@@ -1370,11 +1976,16 @@
             </h2>
 
             <p>
+
                 رودری کاپیتان اسپانیایی‌ها به رئال نه گفت
                 و به احتمال زیاد به بارسلونا می‌پیوندد.
+
             </p>
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCO0bbt2XHThZGHimRx5Z_MXi06vGCrX8FSFPsVe_mow&s=10">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCO0bbt2XHThZGHimRx5Z_MXi06vGCrX8FSFPsVe_mow&s=10"
+                alt="رودری"
+            >
 
             <small>
                 📅 منتشر شده: امروز
@@ -1390,10 +2001,16 @@
             </h2>
 
             <p>
-                در این تصویر شما می‌توانید رنکینگ بهترین تیم‌های جهان را مشاهده کنید.
+
+                در این تصویر شما می‌توانید رنکینگ
+                بهترین تیم‌های جهان را مشاهده کنید.
+
             </p>
 
-            <img src="https://cdn.tarafdari.com/tarafdari-static-files/ts17.tarafdari.com/contents/user725527/content-image/img_20240401_151908_498.jpg">
+            <img
+                src="https://cdn.tarafdari.com/tarafdari-static-files/ts17.tarafdari.com/contents/user725527/content-image/img_20240401_151908_498.jpg"
+                alt="رنکینگ فوتبال"
+            >
 
             <small>
                 📅 منتشر شده: امروز
@@ -1404,37 +2021,48 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- =================================================
          بازی پنالتی
-    ========================================= -->
+    ================================================= -->
 
     <div id="gameSection">
 
         <div class="game-box">
 
+
             <h2>
                 ⚽ بازی پنالتی
             </h2>
 
+
             <div class="score">
 
                 امتیاز تو:
-                <span id="score">0</span>
+
+                <span id="score">
+                    0
+                </span>
 
                 |
 
                 شوت‌ها:
-                <span id="shots">0</span>
+
+                <span id="shots">
+                    0
+                </span>
 
                 از 5
 
             </div>
 
+
             <div
                 class="goal-area"
                 id="goalArea">
 
+
                 <div class="crossbar"></div>
+
 
                 <div
                     class="goalkeeper"
@@ -1444,6 +2072,7 @@
 
                 </div>
 
+
                 <div
                     class="ball"
                     id="ball">
@@ -1451,11 +2080,20 @@
 
             </div>
 
-            <p style="color:#cffffb; margin-bottom:10px;">
+
+            <p
+                style="
+                    color:#cffffb;
+                    margin-bottom:10px;
+                ">
+
                 جهت شوت را انتخاب کن:
+
             </p>
 
+
             <div class="aim-btns">
+
 
                 <button
                     class="aim-btn"
@@ -1465,6 +2103,7 @@
 
                 </button>
 
+
                 <button
                     class="aim-btn"
                     onclick="selectAim('center')">
@@ -1472,6 +2111,7 @@
                     ⬆️ وسط
 
                 </button>
+
 
                 <button
                     class="aim-btn"
@@ -1483,6 +2123,7 @@
 
             </div>
 
+
             <button
                 class="shoot-btn"
                 id="shootBtn"
@@ -1491,6 +2132,7 @@
                 🚀 شوت بزن!
 
             </button>
+
 
             <div
                 class="result-msg"
@@ -1502,31 +2144,41 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- =================================================
          تماس
-    ========================================= -->
+    ================================================= -->
 
     <div id="contactSection">
 
         <div class="contact-box">
 
+
             <h2>
                 📞 تماس با ما
             </h2>
 
+
             <p>
+
                 برای ارتباط با تیم آریوشاه بال
                 می‌تونید از راه‌های زیر استفاده کنید:
+
             </p>
 
+
             <p class="info">
+
                 📧 ایمیل:
                 genariyansamad93@gmail.com
+
             </p>
 
+
             <p class="info">
+
                 📞 شماره تماس:
                 09371130903
+
             </p>
 
         </div>
@@ -1534,31 +2186,41 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- =================================================
          درباره ما
-    ========================================= -->
+    ================================================= -->
 
     <div id="aboutSection">
 
         <div class="about-box">
 
+
             <h2>
                 📖 درباره ما
             </h2>
 
+
             <p>
+
                 سایت آریوشاه بال یک مرجع تخصصی اخبار فوتبال است
                 که توسط آریوشاه عزیز اداره می‌شود. 🏆
+
             </p>
 
+
             <p>
+
                 ما هر روز آخرین اخبار نقل و انتقالات،
                 نتایج بازی‌ها و تحلیل‌های فوتبالی را منتشر می‌کنیم.
+
             </p>
 
+
             <p>
+
                 هدف ما این است که بهترین و به‌روزترین اخبار فوتبال
                 را در اختیار هواداران قرار دهیم. ⚽
+
             </p>
 
         </div>
@@ -1566,29 +2228,31 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- =================================================
          پنل صاحب سایت
-    ========================================= -->
+    ================================================= -->
 
     <div id="adminPanel">
 
         <div class="admin-box">
 
+
             <div class="admin-header">
+
 
                 <h2>
                     👑 پنل فرماندهی آریوشاه
                 </h2>
 
+
                 <p>
                     مرکز کنترل سایت آریوشاه بال
                 </p>
 
-                <div class="online-status">
 
-                    <span class="online-dot"></span>
+                <div class="admin-badge">
 
-                    سایت آنلاین است
+                    🟢 سایت آنلاین است
 
                 </div>
 
@@ -1598,26 +2262,6 @@
             <!-- آمار -->
 
             <div class="stats-grid">
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        👥
-                    </div>
-
-                    <div class="stat-title">
-                        کاربران آنلاین
-                    </div>
-
-                    <div
-                        class="stat-value"
-                        id="onlineUsers">
-
-                        1
-
-                    </div>
-
-                </div>
 
 
                 <div class="stat-card">
@@ -1731,6 +2375,7 @@
 
             <div class="admin-tools">
 
+
                 <button
                     class="admin-tool-btn"
                     onclick="refreshAdminStats()">
@@ -1739,21 +2384,32 @@
 
                 </button>
 
+
                 <button
                     class="admin-tool-btn"
-                    onclick="showToast('🟢 همه سیستم‌ها در وضعیت عادی هستند!')">
+                    onclick="
+                        showToast(
+                            '🟢 همه سیستم‌ها در وضعیت عادی هستند!'
+                        )
+                    ">
 
                     🟢 بررسی وضعیت سایت
 
                 </button>
 
+
                 <button
                     class="admin-tool-btn"
-                    onclick="showToast('📊 آمار سایت با موفقیت بروزرسانی شد!')">
+                    onclick="
+                        showToast(
+                            '📊 آمار سایت با موفقیت بروزرسانی شد!'
+                        )
+                    ">
 
                     📊 گزارش سریع
 
                 </button>
+
 
                 <button
                     class="admin-tool-btn"
@@ -1769,8 +2425,11 @@
             <!-- اخبار موجود -->
 
             <h3 class="admin-news-title">
+
                 📰 اخبار فعلی سایت
+
             </h3>
+
 
             <div id="adminNewsList"></div>
 
@@ -1779,9 +2438,11 @@
 
             <div class="system-box">
 
+
                 <h3>
                     🖥️ وضعیت سیستم
                 </h3>
+
 
                 <div class="system-row">
 
@@ -1795,6 +2456,7 @@
 
                 </div>
 
+
                 <div class="system-row">
 
                     <span>
@@ -1806,6 +2468,7 @@
                     </span>
 
                 </div>
+
 
                 <div class="system-row">
 
@@ -1819,6 +2482,7 @@
 
                 </div>
 
+
                 <div class="system-row">
 
                     <span>
@@ -1830,6 +2494,33 @@
                     </span>
 
                 </div>
+
+
+                <div class="system-row">
+
+                    <span>
+                        سیستم ثبت نام
+                    </span>
+
+                    <span class="system-good">
+                        🟢 فعال
+                    </span>
+
+                </div>
+
+
+                <div class="system-row">
+
+                    <span>
+                        کد امنیتی
+                    </span>
+
+                    <span class="system-good">
+                        🛡️ فعال
+                    </span>
+
+                </div>
+
 
                 <div class="system-row">
 
@@ -1859,914 +2550,1548 @@
 
 <script>
 
-    /* =========================================
-       ورود
-    ========================================= */
 
-    var isAdmin = false;
+/* =====================================================
+   متغیرهای اصلی
+===================================================== */
+
+var isAdmin = false;
+
+var currentUser = null;
+
+var captchaAnswer = '';
+
+var toastTimer;
 
 
-    function enterAsReader() {
+/* =====================================================
+   ثبت نام و ورود
+===================================================== */
 
-        document.getElementById('loginScreen').style.display = 'none';
 
-        document.getElementById('mainSite').style.display = 'block';
+/*
+   ساخت کد امنیتی
+*/
 
-        isAdmin = false;
+function generateCaptcha() {
 
-        showNews();
+    var chars =
+        'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
-        registerVisit();
+    var captcha = '';
 
-        startOnlineSystem();
+    for (var i = 0; i < 5; i++) {
+
+        captcha +=
+            chars.charAt(
+                Math.floor(
+                    Math.random() * chars.length
+                )
+            );
+    }
+
+    captchaAnswer = captcha;
+
+    var captchaElement =
+        document.getElementById(
+            'captchaQuestion'
+        );
+
+    if (captchaElement) {
+
+        captchaElement.textContent =
+            captcha;
+    }
+}
+
+
+/*
+   نمایش ثبت نام
+*/
+
+function showRegisterForm() {
+
+    document.getElementById(
+        'loginChoices'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'registerSection'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'userLoginSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'passwordSection'
+    ).style.display = 'none';
+
+    clearLoginErrors();
+
+    generateCaptcha();
+}
+
+
+/*
+   نمایش ورود کاربر
+*/
+
+function showUserLoginForm() {
+
+    document.getElementById(
+        'loginChoices'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'registerSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'userLoginSection'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'passwordSection'
+    ).style.display = 'none';
+
+    clearLoginErrors();
+}
+
+
+/*
+   نمایش ورود صاحب
+*/
+
+function showPassword() {
+
+    document.getElementById(
+        'loginChoices'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'registerSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'userLoginSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'passwordSection'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'passError'
+    ).style.display = 'none';
+}
+
+
+/*
+   برگشت به صفحه اصلی ورود
+*/
+
+function backToLoginChoices() {
+
+    document.getElementById(
+        'loginChoices'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'registerSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'userLoginSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'passwordSection'
+    ).style.display = 'none';
+
+    clearLoginErrors();
+}
+
+
+/*
+   پاک کردن خطاها
+*/
+
+function clearLoginErrors() {
+
+    document.getElementById(
+        'registerError'
+    ).textContent = '';
+
+    document.getElementById(
+        'userLoginError'
+    ).textContent = '';
+
+    document.getElementById(
+        'passError'
+    ).style.display = 'none';
+}
+
+
+/*
+   اعتبارسنجی شماره موبایل
+*/
+
+function isValidPhone(phone) {
+
+    return /^09\d{9}$/.test(phone);
+}
+
+
+/*
+   ثبت نام
+*/
+
+function registerUser() {
+
+    var phone =
+        document.getElementById(
+            'registerPhone'
+        ).value.trim();
+
+    var password =
+        document.getElementById(
+            'registerPassword'
+        ).value;
+
+    var password2 =
+        document.getElementById(
+            'registerPassword2'
+        ).value;
+
+    var captcha =
+        document.getElementById(
+            'registerCaptcha'
+        ).value.trim().toUpperCase();
+
+    var error =
+        document.getElementById(
+            'registerError'
+        );
+
+
+    error.textContent = '';
+
+
+    /*
+       بررسی شماره
+    */
+
+    if (!isValidPhone(phone)) {
+
+        error.textContent =
+            '❌ شماره موبایل معتبر وارد کن. مثال: 09123456789';
+
+        return;
     }
 
 
-    function showPassword() {
+    /*
+       حداقل طول رمز
+    */
 
-        document.getElementById('passwordSection').style.display = 'block';
+    if (password.length < 6) {
 
-        document.getElementById('passError').style.display = 'none';
+        error.textContent =
+            '❌ رمز عبور باید حداقل ۶ کاراکتر باشد.';
 
+        return;
     }
 
 
-    function checkPassword() {
+    /*
+       تکرار رمز
+    */
 
-        var pass =
-            document.getElementById('adminPass').value;
+    if (password !== password2) {
 
-        /*
-           رمز فعلی سایت
-        */
+        error.textContent =
+            '❌ رمزهای عبور یکسان نیستند.';
 
-        if (pass === 'ari8990') {
-
-            document.getElementById('loginScreen').style.display = 'none';
-
-            document.getElementById('mainSite').style.display = 'block';
-
-            isAdmin = true;
-
-            document
-                .querySelectorAll('.admin-only')
-                .forEach(function(el) {
-
-                    el.style.display = 'inline-block';
-
-                });
-
-            registerVisit();
-
-            startOnlineSystem();
-
-            showAdmin();
-
-            showToast('👑 خوش آمدی صاحب سایت!');
-
-        } else {
-
-            document.getElementById('passError').style.display = 'block';
-
-            showToast('❌ رمز عبور اشتباه است!');
-
-        }
-
+        return;
     }
 
 
-    function logout() {
+    /*
+       بررسی کد امنیتی
+    */
 
-        document.getElementById('mainSite').style.display = 'none';
+    if (
+        captcha === '' ||
+        captcha !== captchaAnswer
+    ) {
 
-        document.getElementById('loginScreen').style.display = 'flex';
+        error.textContent =
+            '❌ کد امنیتی اشتباه است.';
 
-        document.getElementById('adminPass').value = '';
+        generateCaptcha();
 
-        document.getElementById('passwordSection').style.display = 'none';
+        document.getElementById(
+            'registerCaptcha'
+        ).value = '';
 
-        document.getElementById('passError').style.display = 'none';
+        return;
+    }
 
-        isAdmin = false;
+
+    /*
+       دریافت کاربران
+    */
+
+    var users =
+        JSON.parse(
+            localStorage.getItem(
+                'arioshah_users'
+            ) || '{}'
+        );
+
+
+    /*
+       جلوگیری از ثبت نام دوباره شماره
+    */
+
+    if (users[phone]) {
+
+        error.textContent =
+            '❌ این شماره قبلاً ثبت نام کرده است.';
+
+        return;
+    }
+
+
+    /*
+       ذخیره کاربر
+    */
+
+    users[phone] = {
+
+        phone: phone,
+
+        password: password,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        'arioshah_users',
+        JSON.stringify(users)
+    );
+
+
+    /*
+       ذخیره ورود کاربر
+    */
+
+    localStorage.setItem(
+        'arioshah_logged_user',
+        phone
+    );
+
+
+    currentUser = phone;
+
+
+    /*
+       ورود مستقیم
+    */
+
+    document.getElementById(
+        'loginScreen'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'mainSite'
+    ).style.display = 'block';
+
+    isAdmin = false;
+
+    showNews();
+
+    registerVisit();
+
+    showToast(
+        '🎉 ثبت نام با موفقیت انجام شد!'
+    );
+}
+
+
+/*
+   ورود کاربر قبلی
+*/
+
+function userLogin() {
+
+    var phone =
+        document.getElementById(
+            'userLoginPhone'
+        ).value.trim();
+
+    var password =
+        document.getElementById(
+            'userLoginPassword'
+        ).value;
+
+    var error =
+        document.getElementById(
+            'userLoginError'
+        );
+
+
+    error.textContent = '';
+
+
+    if (!isValidPhone(phone)) {
+
+        error.textContent =
+            '❌ شماره موبایل معتبر نیست.';
+
+        return;
+    }
+
+
+    var users =
+        JSON.parse(
+            localStorage.getItem(
+                'arioshah_users'
+            ) || '{}'
+        );
+
+
+    if (!users[phone]) {
+
+        error.textContent =
+            '❌ این شماره هنوز ثبت نام نکرده است.';
+
+        return;
+    }
+
+
+    if (users[phone].password !== password) {
+
+        error.textContent =
+            '❌ شماره یا رمز عبور اشتباه است.';
+
+        return;
+    }
+
+
+    /*
+       ثبت ورود
+    */
+
+    localStorage.setItem(
+        'arioshah_logged_user',
+        phone
+    );
+
+
+    currentUser = phone;
+
+
+    document.getElementById(
+        'loginScreen'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'mainSite'
+    ).style.display = 'block';
+
+    isAdmin = false;
+
+    showNews();
+
+    registerVisit();
+
+    showToast(
+        '👋 خوش برگشتی!'
+    );
+}
+
+
+/*
+   ورود خودکار
+*/
+
+function checkSavedLogin() {
+
+    var savedUser =
+        localStorage.getItem(
+            'arioshah_logged_user'
+        );
+
+
+    if (!savedUser) {
+
+        return false;
+    }
+
+
+    var users =
+        JSON.parse(
+            localStorage.getItem(
+                'arioshah_users'
+            ) || '{}'
+        );
+
+
+    if (!users[savedUser]) {
+
+        localStorage.removeItem(
+            'arioshah_logged_user'
+        );
+
+        return false;
+    }
+
+
+    currentUser = savedUser;
+
+
+    document.getElementById(
+        'loginScreen'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'mainSite'
+    ).style.display = 'block';
+
+    isAdmin = false;
+
+    showNews();
+
+    return true;
+}
+
+
+/* =====================================================
+   ورود صاحب سایت
+===================================================== */
+
+function checkPassword() {
+
+    var pass =
+        document.getElementById(
+            'adminPass'
+        ).value;
+
+
+    /*
+       رمز صاحب سایت
+    */
+
+    if (pass === 'ari8990') {
+
+        document.getElementById(
+            'loginScreen'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'mainSite'
+        ).style.display = 'block';
+
+        isAdmin = true;
+
 
         document
             .querySelectorAll('.admin-only')
             .forEach(function(el) {
 
-                el.style.display = 'none';
+                el.style.display =
+                    'inline-block';
 
             });
 
-    }
 
+        registerVisit();
 
-    /* =========================================
-       نمایش بخش‌ها
-    ========================================= */
+        showAdmin();
 
-    function hideAllSections() {
-
-        document.getElementById('newsSection').style.display = 'none';
-
-        document.getElementById('gameSection').style.display = 'none';
-
-        document.getElementById('contactSection').style.display = 'none';
-
-        document.getElementById('aboutSection').style.display = 'none';
-
-        document.getElementById('adminPanel').style.display = 'none';
-
-    }
-
-
-    function showNews() {
-
-        hideAllSections();
-
-        document.getElementById('newsSection').style.display = 'block';
-
-    }
-
-
-    function showGame() {
-
-        hideAllSections();
-
-        document.getElementById('gameSection').style.display = 'block';
-
-        resetGame();
-
-    }
-
-
-    function showContact() {
-
-        hideAllSections();
-
-        document.getElementById('contactSection').style.display = 'block';
-
-    }
-
-
-    function showAbout() {
-
-        hideAllSections();
-
-        document.getElementById('aboutSection').style.display = 'block';
-
-    }
-
-
-    function showAdmin() {
-
-        if (!isAdmin) return;
-
-        hideAllSections();
-
-        document.getElementById('adminPanel').style.display = 'block';
-
-        refreshAdminStats();
-
-        renderAdminList();
-
-    }
-
-
-    /* =========================================
-       آمار بازدید
-    ========================================= */
-
-    function registerVisit() {
-
-        var visits =
-            parseInt(
-                localStorage.getItem('arioshah_visits') || '0'
-            );
-
-        visits++;
-
-        localStorage.setItem(
-            'arioshah_visits',
-            visits
+        showToast(
+            '👑 خوش آمدی صاحب سایت!'
         );
 
-        updateVisitDisplay();
+    } else {
 
-    }
+        document.getElementById(
+            'passError'
+        ).style.display = 'block';
 
-
-    function updateVisitDisplay() {
-
-        var visits =
-            parseInt(
-                localStorage.getItem('arioshah_visits') || '0'
-            );
-
-        var el =
-            document.getElementById('visitCount');
-
-        if (el) {
-
-            el.textContent = visits;
-
-        }
-
-    }
-
-
-    /* =========================================
-       سیستم کاربران آنلاین
-       
-       توجه:
-       این سیستم برای نسخه بدون سرور است
-       و تب‌های فعال همین مرورگر را می‌شمارد.
-    ========================================= */
-
-    var onlineId =
-        'user_' +
-        Date.now() +
-        '_' +
-        Math.random()
-            .toString(36)
-            .substring(2);
-
-
-    function startOnlineSystem() {
-
-        updateOnlineUsers();
-
-        /*
-           هر 3 ثانیه حضور این تب ثبت می‌شود
-        */
-
-        setInterval(function() {
-
-            updateHeartbeat();
-
-            updateOnlineUsers();
-
-        }, 3000);
-
-        updateHeartbeat();
-
-    }
-
-
-    function updateHeartbeat() {
-
-        var users =
-            JSON.parse(
-                localStorage.getItem('arioshah_online') || '{}'
-            );
-
-        users[onlineId] = Date.now();
-
-        localStorage.setItem(
-            'arioshah_online',
-            JSON.stringify(users)
+        showToast(
+            '❌ رمز عبور اشتباه است!'
         );
-
     }
+}
 
 
-    function updateOnlineUsers() {
+/* =====================================================
+   خروج
+===================================================== */
 
-        var users =
-            JSON.parse(
-                localStorage.getItem('arioshah_online') || '{}'
-            );
+function logout() {
 
-        var now = Date.now();
+    /*
+       حذف ورود خودکار
+    */
 
-        var activeUsers = {};
+    localStorage.removeItem(
+        'arioshah_logged_user'
+    );
 
-        Object.keys(users).forEach(function(id) {
 
-            /*
-               کاربرانی که کمتر از 8 ثانیه
-               فعالیت داشته‌اند آنلاین محسوب می‌شوند
-            */
+    currentUser = null;
 
-            if (now - users[id] < 8000) {
+    isAdmin = false;
 
-                activeUsers[id] = users[id];
 
-            }
+    document.getElementById(
+        'mainSite'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'loginScreen'
+    ).style.display = 'flex';
+
+
+    /*
+       پاک کردن فرم ها
+    */
+
+    document.getElementById(
+        'adminPass'
+    ).value = '';
+
+    document.getElementById(
+        'registerPhone'
+    ).value = '';
+
+    document.getElementById(
+        'registerPassword'
+    ).value = '';
+
+    document.getElementById(
+        'registerPassword2'
+    ).value = '';
+
+    document.getElementById(
+        'registerCaptcha'
+    ).value = '';
+
+    document.getElementById(
+        'userLoginPhone'
+    ).value = '';
+
+    document.getElementById(
+        'userLoginPassword'
+    ).value = '';
+
+
+    /*
+       برگشت به انتخاب ورود
+    */
+
+    document.getElementById(
+        'loginChoices'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'registerSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'userLoginSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'passwordSection'
+    ).style.display = 'none';
+
+
+    /*
+       مخفی کردن پنل صاحب
+    */
+
+    document
+        .querySelectorAll('.admin-only')
+        .forEach(function(el) {
+
+            el.style.display = 'none';
 
         });
 
-        localStorage.setItem(
-            'arioshah_online',
-            JSON.stringify(activeUsers)
+
+    clearLoginErrors();
+
+    showToast(
+        '🚪 خارج شدی؛ برای ورود دوباره شماره و رمز لازم است.'
+    );
+}
+
+
+/* =====================================================
+   نمایش بخش ها
+===================================================== */
+
+function hideAllSections() {
+
+    document.getElementById(
+        'newsSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'gameSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'contactSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'aboutSection'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'adminPanel'
+    ).style.display = 'none';
+}
+
+
+function showNews() {
+
+    hideAllSections();
+
+    document.getElementById(
+        'newsSection'
+    ).style.display = 'block';
+}
+
+
+function showGame() {
+
+    hideAllSections();
+
+    document.getElementById(
+        'gameSection'
+    ).style.display = 'block';
+
+    resetGame();
+}
+
+
+function showContact() {
+
+    hideAllSections();
+
+    document.getElementById(
+        'contactSection'
+    ).style.display = 'block';
+}
+
+
+function showAbout() {
+
+    hideAllSections();
+
+    document.getElementById(
+        'aboutSection'
+    ).style.display = 'block';
+}
+
+
+function showAdmin() {
+
+    if (!isAdmin) {
+
+        return;
+    }
+
+
+    hideAllSections();
+
+
+    document.getElementById(
+        'adminPanel'
+    ).style.display = 'block';
+
+
+    refreshAdminStats();
+
+    renderAdminList();
+}
+
+
+/* =====================================================
+   آمار بازدید
+===================================================== */
+
+function registerVisit() {
+
+    var visits =
+        parseInt(
+            localStorage.getItem(
+                'arioshah_visits'
+            ) || '0'
         );
 
-        var count =
-            Object.keys(activeUsers).length;
 
-        var onlineElement =
-            document.getElementById('onlineUsers');
+    visits++;
 
-        if (onlineElement) {
 
-            onlineElement.textContent = count;
+    localStorage.setItem(
+        'arioshah_visits',
+        visits
+    );
 
-        }
 
+    updateVisitDisplay();
+}
+
+
+function updateVisitDisplay() {
+
+    var visits =
+        parseInt(
+            localStorage.getItem(
+                'arioshah_visits'
+            ) || '0'
+        );
+
+
+    var el =
+        document.getElementById(
+            'visitCount'
+        );
+
+
+    if (el) {
+
+        el.textContent = visits;
+    }
+}
+
+
+/* =====================================================
+   بازی پنالتی
+===================================================== */
+
+var score = 0;
+
+var shots = 0;
+
+var maxShots = 5;
+
+var selectedAim = null;
+
+var gameActive = false;
+
+
+function resetGame() {
+
+    score = 0;
+
+    shots = 0;
+
+    selectedAim = null;
+
+    gameActive = true;
+
+
+    document.getElementById(
+        'score'
+    ).textContent = '0';
+
+
+    document.getElementById(
+        'shots'
+    ).textContent = '0';
+
+
+    document.getElementById(
+        'resultMsg'
+    ).textContent = '';
+
+
+    document.getElementById(
+        'resultMsg'
+    ).className = 'result-msg';
+
+
+    document.getElementById(
+        'shootBtn'
+    ).disabled = false;
+
+
+    document.getElementById(
+        'ball'
+    ).style.display = 'none';
+
+
+    document.getElementById(
+        'goalkeeper'
+    ).style.left = '50%';
+
+
+    document.getElementById(
+        'goalkeeper'
+    ).style.transform =
+        'translateX(-50%)';
+
+
+    document
+        .querySelectorAll('.aim-btn')
+        .forEach(function(btn) {
+
+            btn.classList.remove('selected');
+
+        });
+}
+
+
+function selectAim(direction) {
+
+    if (!gameActive) {
+
+        return;
     }
 
 
-    window.addEventListener('storage', function(event) {
-
-        if (event.key === 'arioshah_online') {
-
-            updateOnlineUsers();
-
-        }
-
-    });
+    selectedAim = direction;
 
 
-    window.addEventListener('beforeunload', function() {
+    document
+        .querySelectorAll('.aim-btn')
+        .forEach(function(btn) {
 
-        try {
-
-            var users =
-                JSON.parse(
-                    localStorage.getItem('arioshah_online') || '{}'
-                );
-
-            delete users[onlineId];
-
-            localStorage.setItem(
-                'arioshah_online',
-                JSON.stringify(users)
-            );
-
-        } catch (e) {}
-
-    });
-
-
-    /* =========================================
-       بازی پنالتی
-    ========================================= */
-
-    var score = 0;
-
-    var shots = 0;
-
-    var maxShots = 5;
-
-    var selectedAim = null;
-
-    var gameActive = false;
-
-
-    function resetGame() {
-
-        score = 0;
-
-        shots = 0;
-
-        selectedAim = null;
-
-        gameActive = true;
-
-        document.getElementById('score').textContent = '0';
-
-        document.getElementById('shots').textContent = '0';
-
-        document.getElementById('resultMsg').textContent = '';
-
-        document.getElementById('resultMsg').className =
-            'result-msg';
-
-        document.getElementById('shootBtn').disabled = false;
-
-        document.getElementById('ball').style.display = 'none';
-
-        document.getElementById('goalkeeper').style.left = '50%';
-
-        document.getElementById('goalkeeper').style.transform =
-            'translateX(-50%)';
-
-
-        document
-            .querySelectorAll('.aim-btn')
-            .forEach(function(btn) {
-
-                btn.classList.remove('selected');
-
-            });
-
-    }
-
-
-    function selectAim(direction) {
-
-        if (!gameActive) return;
-
-        selectedAim = direction;
-
-        document
-            .querySelectorAll('.aim-btn')
-            .forEach(function(btn) {
-
-                btn.classList.remove('selected');
-
-            });
-
-
-        var buttons =
-            document.querySelectorAll('.aim-btn');
-
-
-        buttons.forEach(function(btn) {
-
-            if (
-                btn.getAttribute('onclick')
-                    .includes(direction)
-            ) {
-
-                btn.classList.add('selected');
-
-            }
+            btn.classList.remove('selected');
 
         });
 
+
+    var buttons =
+        document.querySelectorAll(
+            '.aim-btn'
+        );
+
+
+    buttons.forEach(function(btn) {
+
+        if (
+            btn
+                .getAttribute('onclick')
+                .includes(direction)
+        ) {
+
+            btn.classList.add('selected');
+        }
+
+    });
+}
+
+
+function shoot() {
+
+    if (!gameActive) {
+
+        return;
     }
 
 
-    function shoot() {
+    if (!selectedAim) {
 
-        if (!gameActive) return;
-
-        if (!selectedAim) {
-
-            document.getElementById('resultMsg').textContent =
-                '⚠️ اول جهت شوت را انتخاب کن!';
-
-            document.getElementById('resultMsg').className =
-                'result-msg bad';
-
-            return;
-
-        }
-
-        if (shots >= maxShots) return;
+        document.getElementById(
+            'resultMsg'
+        ).textContent =
+            '⚠️ اول جهت شوت را انتخاب کن!';
 
 
-        shots++;
+        document.getElementById(
+            'resultMsg'
+        ).className =
+            'result-msg bad';
 
 
-        var goalArea =
-            document.getElementById('goalArea');
-
-        var areaWidth =
-            goalArea.offsetWidth;
-
-        var ball =
-            document.getElementById('ball');
-
-        var keeper =
-            document.getElementById('goalkeeper');
+        return;
+    }
 
 
-        var positions = {
+    if (shots >= maxShots) {
 
-            left: areaWidth * 0.2,
-
-            center: areaWidth * 0.5,
-
-            right: areaWidth * 0.8
-
-        };
+        return;
+    }
 
 
-        var keeperPositions = [
-            'left',
-            'center',
-            'right'
+    shots++;
+
+
+    var goalArea =
+        document.getElementById(
+            'goalArea'
+        );
+
+
+    var areaWidth =
+        goalArea.offsetWidth;
+
+
+    var ball =
+        document.getElementById(
+            'ball'
+        );
+
+
+    var keeper =
+        document.getElementById(
+            'goalkeeper'
+        );
+
+
+    var positions = {
+
+        left: areaWidth * 0.2,
+
+        center: areaWidth * 0.5,
+
+        right: areaWidth * 0.8
+
+    };
+
+
+    var keeperPositions = [
+
+        'left',
+        'center',
+        'right'
+
+    ];
+
+
+    var keeperChoice =
+        keeperPositions[
+            Math.floor(
+                Math.random() * 3
+            )
         ];
 
 
-        var keeperChoice =
-            keeperPositions[
-                Math.floor(Math.random() * 3)
-            ];
+    var keeperX =
+        positions[keeperChoice];
 
 
-        var keeperX =
-            positions[keeperChoice];
+    keeper.style.left =
+        keeperX + 'px';
 
 
-        keeper.style.left =
-            keeperX + 'px';
-
-        keeper.style.transform =
-            'translateX(-50%)';
+    keeper.style.transform =
+        'translateX(-50%)';
 
 
-        ball.style.display = 'block';
-
-        ball.style.left =
-            positions[selectedAim] + 'px';
-
-        ball.style.bottom =
-            '120px';
+    ball.style.display =
+        'block';
 
 
-        var msg =
-            document.getElementById('resultMsg');
+    ball.style.left =
+        positions[selectedAim] + 'px';
 
 
-        var isGoal =
-            selectedAim !== keeperChoice;
+    ball.style.bottom =
+        '120px';
 
 
-        setTimeout(function() {
-
-            if (isGoal) {
-
-                score++;
-
-                msg.textContent =
-                    '⚽ گل زدی! آفرین!';
-
-                msg.className =
-                    'result-msg good';
-
-            } else {
-
-                msg.textContent =
-                    '😅 دروازه‌بان گرفت!';
-
-                msg.className =
-                    'result-msg bad';
-
-            }
+    var msg =
+        document.getElementById(
+            'resultMsg'
+        );
 
 
-            document.getElementById('score').textContent =
-                score;
-
-            document.getElementById('shots').textContent =
-                shots;
+    var isGoal =
+        selectedAim !== keeperChoice;
 
 
-            /*
-               ثبت تعداد شوت‌ها
-            */
-
-            var totalShots =
-                parseInt(
-                    localStorage.getItem('arioshah_shots') || '0'
-                );
-
-            totalShots++;
-
-            localStorage.setItem(
-                'arioshah_shots',
-                totalShots
-            );
+    setTimeout(function() {
 
 
-            /*
-               ذخیره بهترین رکورد
-            */
+        if (isGoal) {
 
-            var bestScore =
-                parseInt(
-                    localStorage.getItem('arioshah_best') || '0'
-                );
-
-            if (score > bestScore) {
-
-                localStorage.setItem(
-                    'arioshah_best',
-                    score
-                );
-
-            }
+            score++;
 
 
-            setTimeout(function() {
-
-                ball.style.display = 'none';
-
-                ball.style.bottom = '0';
-
-            }, 500);
+            msg.textContent =
+                '⚽ گل زدی! آفرین!';
 
 
-            if (shots >= maxShots) {
+            msg.className =
+                'result-msg good';
 
-                gameActive = false;
+        } else {
 
-                setTimeout(function() {
-
-                    msg.textContent =
-                        '🏁 بازی تموم شد! امتیاز نهایی: ' +
-                        score +
-                        ' از ' +
-                        maxShots;
-
-                    document.getElementById('shootBtn').disabled =
-                        true;
-
-                }, 800);
-
-            }
-
-        }, 400);
-
-    }
+            msg.textContent =
+                '😅 دروازه‌بان گرفت!';
 
 
-    /* =========================================
-       پنل مدیریت
-    ========================================= */
-
-    function refreshAdminStats() {
-
-        updateVisitDisplay();
-
-        updateOnlineUsers();
-
-        /*
-           تعداد اخبار
-        */
-
-        var newsCount =
-            document.querySelectorAll(
-                '#newsSection .news-box'
-            ).length;
+            msg.className =
+                'result-msg bad';
+        }
 
 
-        document.getElementById('newsCount').textContent =
-            newsCount;
+        document.getElementById(
+            'score'
+        ).textContent = score;
+
+
+        document.getElementById(
+            'shots'
+        ).textContent = shots;
 
 
         /*
-           تعداد شوت‌ها
+           تعداد کل شوت ها
         */
 
         var totalShots =
             parseInt(
-                localStorage.getItem('arioshah_shots') || '0'
+                localStorage.getItem(
+                    'arioshah_shots'
+                ) || '0'
             );
 
 
-        document.getElementById('totalShots').textContent =
-            totalShots;
+        totalShots++;
+
+
+        localStorage.setItem(
+            'arioshah_shots',
+            totalShots
+        );
 
 
         /*
            بهترین رکورد
         */
 
-        var best =
+        var bestScore =
             parseInt(
-                localStorage.getItem('arioshah_best') || '0'
+                localStorage.getItem(
+                    'arioshah_best'
+                ) || '0'
             );
 
 
-        document.getElementById('bestScore').textContent =
-            best + '/5';
+        if (score > bestScore) {
 
-
-        /*
-           زمان آخرین بروزرسانی
-        */
-
-        var now =
-            new Date();
-
-        var time =
-            now.toLocaleTimeString('fa-IR');
-
-        document.getElementById('lastUpdate').textContent =
-            time;
-
-
-        showToast('🔄 آمار پنل بروزرسانی شد');
-
-    }
-
-
-    /* =========================================
-       زمان حضور در سایت
-    ========================================= */
-
-    var sessionStart =
-        Date.now();
-
-
-    setInterval(function() {
-
-        if (
-            document.getElementById('mainSite').style.display !==
-            'none'
-        ) {
-
-            var elapsed =
-                Math.floor(
-                    (Date.now() - sessionStart) / 1000
-                );
-
-
-            var minutes =
-                Math.floor(elapsed / 60);
-
-            var seconds =
-                elapsed % 60;
-
-
-            var text =
-                minutes +
-                ':' +
-                String(seconds).padStart(2, '0');
-
-
-            var el =
-                document.getElementById('sessionTime');
-
-
-            if (el) {
-
-                el.textContent = text;
-
-            }
-
-        }
-
-    }, 1000);
-
-
-    /* =========================================
-       لیست اخبار
-    ========================================= */
-
-    function renderAdminList() {
-
-        var list =
-            document.getElementById('adminNewsList');
-
-
-        list.innerHTML = '';
-
-
-        var boxes =
-            document.querySelectorAll(
-                '#newsSection .news-box'
+            localStorage.setItem(
+                'arioshah_best',
+                score
             );
-
-
-        boxes.forEach(function(box) {
-
-            var item =
-                document.createElement('div');
-
-            item.className =
-                'admin-news-item';
-
-
-            var title =
-                box.querySelector('h2').textContent;
-
-
-            var span =
-                document.createElement('span');
-
-            span.textContent =
-                title;
-
-
-            var deleteBtn =
-                document.createElement('button');
-
-            deleteBtn.textContent =
-                '🗑️ حذف';
-
-
-            deleteBtn.onclick =
-                function() {
-
-                    deleteNews(box);
-
-                };
-
-
-            item.appendChild(span);
-
-            item.appendChild(deleteBtn);
-
-            list.appendChild(item);
-
-        });
-
-    }
-
-
-    function deleteNews(box) {
-
-        if (
-            !confirm(
-                'آیا مطمئن هستید این خبر حذف شود؟'
-            )
-        ) {
-
-            return;
-
         }
 
 
-        box.remove();
+        setTimeout(function() {
 
-        renderAdminList();
+            ball.style.display =
+                'none';
 
-        refreshAdminStats();
+            ball.style.bottom =
+                '0';
 
-        showToast('🗑️ خبر حذف شد');
-
-    }
-
-
-    /* =========================================
-       پاک کردن آمار بازی
-    ========================================= */
-
-    function clearGameStats() {
-
-        if (
-            !confirm(
-                'آمار بازی پاک شود؟'
-            )
-        ) {
-
-            return;
-
-        }
+        }, 500);
 
 
-        localStorage.removeItem(
-            'arioshah_shots'
-        );
+        if (shots >= maxShots) {
 
-        localStorage.removeItem(
-            'arioshah_best'
-        );
+            gameActive = false;
 
 
-        refreshAdminStats();
-
-        showToast(
-            '🧹 آمار بازی پاک شد'
-        );
-
-    }
-
-
-    /* =========================================
-       اعلان
-    ========================================= */
-
-    var toastTimer;
-
-
-    function showToast(message) {
-
-        var toast =
-            document.getElementById('toast');
-
-
-        toast.textContent =
-            message;
-
-
-        toast.classList.add('show');
-
-
-        clearTimeout(toastTimer);
-
-
-        toastTimer =
             setTimeout(function() {
 
-                toast.classList.remove('show');
+                msg.textContent =
+                    '🏁 بازی تموم شد! امتیاز نهایی: ' +
+                    score +
+                    ' از ' +
+                    maxShots;
 
-            }, 2500);
 
+                document.getElementById(
+                    'shootBtn'
+                ).disabled = true;
+
+            }, 800);
+        }
+
+
+    }, 400);
+}
+
+
+/* =====================================================
+   پنل مدیریت
+===================================================== */
+
+function refreshAdminStats() {
+
+    updateVisitDisplay();
+
+
+    /*
+       تعداد اخبار
+    */
+
+    var newsCount =
+        document.querySelectorAll(
+            '#newsSection .news-box'
+        ).length;
+
+
+    document.getElementById(
+        'newsCount'
+    ).textContent =
+        newsCount;
+
+
+    /*
+       تعداد شوت ها
+    */
+
+    var totalShots =
+        parseInt(
+            localStorage.getItem(
+                'arioshah_shots'
+            ) || '0'
+        );
+
+
+    document.getElementById(
+        'totalShots'
+    ).textContent =
+        totalShots;
+
+
+    /*
+       بهترین رکورد
+    */
+
+    var best =
+        parseInt(
+            localStorage.getItem(
+                'arioshah_best'
+            ) || '0'
+        );
+
+
+    document.getElementById(
+        'bestScore'
+    ).textContent =
+        best + '/5';
+
+
+    /*
+       آخرین بروزرسانی
+    */
+
+    var now =
+        new Date();
+
+
+    var time =
+        now.toLocaleTimeString(
+            'fa-IR'
+        );
+
+
+    document.getElementById(
+        'lastUpdate'
+    ).textContent =
+        time;
+
+
+    showToast(
+        '🔄 آمار پنل بروزرسانی شد'
+    );
+}
+
+
+/* =====================================================
+   زمان حضور
+===================================================== */
+
+var sessionStart =
+    Date.now();
+
+
+setInterval(function() {
+
+
+    if (
+        document.getElementById(
+            'mainSite'
+        ).style.display !== 'none'
+    ) {
+
+
+        var elapsed =
+            Math.floor(
+                (Date.now() - sessionStart)
+                / 1000
+            );
+
+
+        var minutes =
+            Math.floor(
+                elapsed / 60
+            );
+
+
+        var seconds =
+            elapsed % 60;
+
+
+        var text =
+            minutes +
+            ':' +
+            String(seconds).padStart(
+                2,
+                '0'
+            );
+
+
+        var el =
+            document.getElementById(
+                'sessionTime'
+            );
+
+
+        if (el) {
+
+            el.textContent =
+                text;
+        }
     }
 
 
-    /* =========================================
-       شروع اولیه
-    ========================================= */
+}, 1000);
 
-    updateVisitDisplay();
+
+/* =====================================================
+   لیست اخبار در پنل
+===================================================== */
+
+function renderAdminList() {
+
+    var list =
+        document.getElementById(
+            'adminNewsList'
+        );
+
+
+    list.innerHTML = '';
+
+
+    var boxes =
+        document.querySelectorAll(
+            '#newsSection .news-box'
+        );
+
+
+    boxes.forEach(function(box) {
+
+
+        var item =
+            document.createElement(
+                'div'
+            );
+
+
+        item.className =
+            'admin-news-item';
+
+
+        var title =
+            box.querySelector(
+                'h2'
+            ).textContent;
+
+
+        var span =
+            document.createElement(
+                'span'
+            );
+
+
+        span.textContent =
+            title;
+
+
+        var deleteBtn =
+            document.createElement(
+                'button'
+            );
+
+
+        deleteBtn.textContent =
+            '🗑️ حذف';
+
+
+        deleteBtn.onclick =
+            function() {
+
+                deleteNews(box);
+
+            };
+
+
+        item.appendChild(span);
+
+        item.appendChild(deleteBtn);
+
+        list.appendChild(item);
+
+    });
+}
+
+
+/*
+   حذف خبر
+*/
+
+function deleteNews(box) {
+
+    if (
+        !confirm(
+            'آیا مطمئن هستید این خبر حذف شود؟'
+        )
+    ) {
+
+        return;
+    }
+
+
+    box.remove();
+
+
+    renderAdminList();
+
+    refreshAdminStats();
+
+
+    showToast(
+        '🗑️ خبر حذف شد'
+    );
+}
+
+
+/* =====================================================
+   پاک کردن آمار بازی
+===================================================== */
+
+function clearGameStats() {
+
+    if (
+        !confirm(
+            'آمار بازی پاک شود؟'
+        )
+    ) {
+
+        return;
+    }
+
+
+    localStorage.removeItem(
+        'arioshah_shots'
+    );
+
+
+    localStorage.removeItem(
+        'arioshah_best'
+    );
+
+
+    refreshAdminStats();
+
+
+    showToast(
+        '🧹 آمار بازی پاک شد'
+    );
+}
+
+
+/* =====================================================
+   اعلان
+===================================================== */
+
+function showToast(message) {
+
+    var toast =
+        document.getElementById(
+            'toast'
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        'show'
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(function() {
+
+            toast.classList.remove(
+                'show'
+            );
+
+        }, 2500);
+}
+
+
+/* =====================================================
+   شروع اولیه سایت
+===================================================== */
+
+updateVisitDisplay();
+
+
+/*
+   اگر قبلاً وارد شده باشد
+   مستقیم وارد سایت می شود.
+*/
+
+if (!checkSavedLogin()) {
+
+    document.getElementById(
+        'loginScreen'
+    ).style.display =
+        'flex';
+
+    document.getElementById(
+        'mainSite'
+    ).style.display =
+        'none';
+
+}
+
+
+/*
+   ساخت اولین کپچا
+*/
+
+generateCaptcha();
 
 </script>
 
 </body>
+
 </html>
